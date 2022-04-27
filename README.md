@@ -1,4 +1,4 @@
 # Cesurmon
-Proyecto de programacion de Pokemon
+Proyecto de programación de Pokemon
 
 ## Clase Pokemon
