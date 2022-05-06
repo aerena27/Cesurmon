@@ -1,0 +1,5 @@
+package pokemon;
+
+public enum Efectividad {
+    NEUTRO, DESVENTAJA, VENTAJA, VAPORIZADO, DERRETIDO, SUBLIMACION, LICUACION
+}
