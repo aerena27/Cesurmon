@@ -21,14 +21,12 @@ public class Pokemon {
 	private Movimiento[] movimientos;
 	private ArrayList<Movimiento> movimientosAprendidos;
 
-	public Pokemon(int idEspecie, String nombreEspecie, String mote, int puntosSalud, int ataqueFisico,
-			int defensaFisica, int ataqueEspecial, int defensaEspecial, int velocidad, int nivel, int experiencia,
-			int fertilidad, Estado estado, Tipo tipo, Movimiento movimiento1, Movimiento movimiento2,
+	public Pokemon(int idEspecie, String nombreEspecie, int puntosSalud, int ataqueFisico,
+			int defensaFisica, int ataqueEspecial, int defensaEspecial, int velocidad, int nivel, int experiencia, Estado estado, Tipo tipo, Movimiento movimiento1, Movimiento movimiento2,
 			Movimiento movimiento3, Movimiento movimiento4) {
 		super();
 		this.idEspecie = idEspecie;
 		this.nombreEspecie = nombreEspecie;
-		this.mote = mote;
 		this.puntosSalud = puntosSalud;
 		this.ataqueFisico = ataqueFisico;
 		this.defensaFisica = defensaFisica;
@@ -37,7 +35,7 @@ public class Pokemon {
 		this.velocidad = velocidad;
 		this.nivel = nivel;
 		this.experiencia = experiencia;
-		this.fertilidad = fertilidad;
+		this.fertilidad = 5;
 		this.estado = estado;
 		this.tipo = tipo;
 		this.movimientos = new Movimiento[4];
