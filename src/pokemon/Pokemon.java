@@ -23,7 +23,8 @@ public class Pokemon {
 
 	public Pokemon(int idEspecie, String nombreEspecie, String mote, int puntosSalud, int ataqueFisico,
 			int defensaFisica, int ataqueEspecial, int defensaEspecial, int velocidad, int nivel, int experiencia,
-			int fertilidad, Estado estado, Tipo tipo) {
+			int fertilidad, Estado estado, Tipo tipo, Movimiento movimiento1, Movimiento movimiento2,
+			Movimiento movimiento3, Movimiento movimiento4) {
 		super();
 		this.idEspecie = idEspecie;
 		this.nombreEspecie = nombreEspecie;
@@ -39,6 +40,24 @@ public class Pokemon {
 		this.fertilidad = fertilidad;
 		this.estado = estado;
 		this.tipo = tipo;
+		this.movimientos = new Movimiento[4];
+		this.movimientos[0] = movimiento1;
+		this.movimientos[1] = movimiento2;
+		this.movimientos[2] = movimiento3;
+		this.movimientos[3] = movimiento4;
+
+		if (movimiento1 != null) {
+			movimientosAprendidos.add(movimiento1);
+		}
+		if (movimiento2 != null) {
+			movimientosAprendidos.add(movimiento2);
+		}
+		if (movimiento3 != null) {
+			movimientosAprendidos.add(movimiento3);
+		}
+		if (movimiento4 != null) {
+			movimientosAprendidos.add(movimiento4);
+		}
 	}
 
 	public int getIdEspecie() {
