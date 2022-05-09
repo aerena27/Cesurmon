@@ -43,11 +43,11 @@ public class Pokemon {
 		this.movimientos[1] = movimiento2;
 		this.movimientos[2] = movimiento3;
 		this.movimientos[3] = movimiento4;
-		
-		anadirMovimientoAprendido(movimiento1);
-		anadirMovimientoAprendido(movimiento2);
-		anadirMovimientoAprendido(movimiento3);
-		anadirMovimientoAprendido(movimiento4);
+		//anadirMovimientoAprendido(movimiento1);
+		//anadirMovimientoAprendido(movimiento2);
+		//anadirMovimientoAprendido(movimiento3);
+		//anadirMovimientoAprendido(movimiento4);
+
 	}
 
 	public int getIdEspecie() {

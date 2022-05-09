@@ -4,8 +4,8 @@ public class MovimientoEstado extends Movimiento {
 
     private Estado estado;
 
-    public MovimientoEstado(Tipo tipo, int resistencia, Estado estado) {
-        super(tipo, resistencia);
+    public MovimientoEstado(int resistencia, Estado estado) {
+        super(resistencia);
         this.estado = estado;
     }
 
