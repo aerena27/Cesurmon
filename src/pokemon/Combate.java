@@ -7,17 +7,14 @@ public class Combate {
 	private Entrenador rival;
 	private int koJugador;
 	private int koRival;
-	private Efectividad efectividadMov;
 
-	public Combate(int turno, Entrenador jugador, Entrenador rival, int koJugador, int koRival,
-			Efectividad efectividadMov) {
+	public Combate(int turno, Entrenador jugador, Entrenador rival, int koJugador, int koRival) {
 		super();
 		this.turno = turno;
 		this.jugador = jugador;
 		this.rival = rival;
 		this.koJugador = koJugador;
 		this.koRival = koRival;
-		this.efectividadMov = efectividadMov;
 	}
 
 	public void combatir(Entrenador atacante, Entrenador defensor) {
@@ -39,12 +36,17 @@ public class Combate {
 		return ganador.getNombre();
 	}
 
-	public void logicaEfectividad() {
+	public int logicaTipos() {
 
-	}
 
-	public void logicaTipos() {
 
+
+
+
+
+
+
+		return 0;
 	}
 
 	public int getTurno() {
@@ -85,14 +87,6 @@ public class Combate {
 
 	public void setKoRival(int koRival) {
 		this.koRival = koRival;
-	}
-
-	public Efectividad getEfectividadMov() {
-		return efectividadMov;
-	}
-
-	public void setEfectividadMov(Efectividad efectividadMov) {
-		this.efectividadMov = efectividadMov;
 	}
 
 }
