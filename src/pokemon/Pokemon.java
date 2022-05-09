@@ -15,13 +15,11 @@ public class Pokemon {
 	private int experiencia;
 	private int fertilidad;
 	private Estado estado;
-	private Tipo tipo1;
-	private Tipo tipo2;
-
+	private Tipo tipo;
 
 	public Pokemon(int idEspecie, String nombreEspecie, String mote, int puntosSalud, int ataqueFisico,
 			int defensaFisica, int ataqueEspecial, int defensaEspecial, int velocidad, int nivel, int experiencia,
-			int fertilidad, Estado estado, Tipo tipo1, Tipo tipo2) {
+			int fertilidad, Estado estado, Tipo tipo) {
 		super();
 		this.idEspecie = idEspecie;
 		this.nombreEspecie = nombreEspecie;
@@ -36,8 +34,7 @@ public class Pokemon {
 		this.experiencia = experiencia;
 		this.fertilidad = fertilidad;
 		this.estado = estado;
-		this.tipo1 = tipo1;
-		this.tipo2 = tipo2;
+		this.tipo = tipo;
 	}    
 
 
@@ -120,16 +117,10 @@ public class Pokemon {
 		this.estado = estado;
 	}
 	public Tipo getTipo1() {
-		return tipo1;
+		return tipo;
 	}
-	public void setTipo1(Tipo tipo1) {
-		this.tipo1 = tipo1;
-	}
-	public Tipo getTipo2() {
-		return tipo2;
-	}
-	public void setTipo2(Tipo tipo2) {
-		this.tipo2 = tipo2;
+	public void setTipo1(Tipo tipo) {
+		this.tipo = tipo;
 	}
 	
 }
