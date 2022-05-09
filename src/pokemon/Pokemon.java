@@ -1,5 +1,7 @@
 package pokemon;
 
+import java.util.ArrayList;
+
 public class Pokemon {
 
 	private int idEspecie;
@@ -16,6 +18,8 @@ public class Pokemon {
 	private int fertilidad;
 	private Estado estado;
 	private Tipo tipo;
+	private Movimiento[] movimientos;
+	private ArrayList<Movimiento> movimientosAprendidos;
 
 	public Pokemon(int idEspecie, String nombreEspecie, String mote, int puntosSalud, int ataqueFisico,
 			int defensaFisica, int ataqueEspecial, int defensaEspecial, int velocidad, int nivel, int experiencia,
@@ -35,92 +39,134 @@ public class Pokemon {
 		this.fertilidad = fertilidad;
 		this.estado = estado;
 		this.tipo = tipo;
-	}    
-
+	}
 
 	public int getIdEspecie() {
 		return idEspecie;
 	}
+
 	public void setIdEspecie(int idEspecie) {
 		this.idEspecie = idEspecie;
 	}
+
 	public String getNombreEspecie() {
 		return nombreEspecie;
 	}
+
 	public void setNombreEspecie(String nombreEspecie) {
 		this.nombreEspecie = nombreEspecie;
 	}
+
 	public String getMote() {
 		return mote;
 	}
+
 	public void setMote(String mote) {
 		this.mote = mote;
 	}
+
 	public int getPuntosSalud() {
 		return puntosSalud;
 	}
+
 	public void setPuntosSalud(int puntosSalud) {
 		this.puntosSalud = puntosSalud;
 	}
+
 	public int getAtaqueFisico() {
 		return ataqueFisico;
 	}
+
 	public void setAtaqueFisico(int ataqueFisico) {
 		this.ataqueFisico = ataqueFisico;
 	}
+
 	public int getDefensaFisica() {
 		return defensaFisica;
 	}
+
 	public void setDefensaFisica(int defensaFisica) {
 		this.defensaFisica = defensaFisica;
 	}
+
 	public int getAtaqueEspecial() {
 		return ataqueEspecial;
 	}
+
 	public void setAtaqueEspecial(int ataqueEspecial) {
 		this.ataqueEspecial = ataqueEspecial;
 	}
+
 	public int getDefensaEspecial() {
 		return defensaEspecial;
 	}
+
 	public void setDefensaEspecial(int defensaEspecial) {
 		this.defensaEspecial = defensaEspecial;
 	}
+
 	public int getVelocidad() {
 		return velocidad;
 	}
+
 	public void setVelocidad(int velocidad) {
 		this.velocidad = velocidad;
 	}
+
 	public int getNivel() {
 		return nivel;
 	}
+
 	public void setNivel(int nivel) {
 		this.nivel = nivel;
 	}
+
 	public int getExperiencia() {
 		return experiencia;
 	}
+
 	public void setExperiencia(int experiencia) {
 		this.experiencia = experiencia;
 	}
+
 	public int getFertilidad() {
 		return fertilidad;
 	}
+
 	public void setFertilidad(int fertilidad) {
 		this.fertilidad = fertilidad;
 	}
+
 	public Estado getEstado() {
 		return estado;
 	}
+
 	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
+
 	public Tipo getTipo1() {
 		return tipo;
 	}
+
 	public void setTipo1(Tipo tipo) {
 		this.tipo = tipo;
 	}
-	
+
+	public Movimiento[] getMovimientos() {
+		return movimientos;
+	}
+
+	public void setMovimientos(Movimiento[] movimientos) {
+		this.movimientos = movimientos;
+	}
+
+	public ArrayList<Movimiento> getMovimientosAprendidos() {
+		return movimientosAprendidos;
+	}
+
+	public void setMovimientosAprendidos(ArrayList<Movimiento> movimientosAprendidos) {
+		this.movimientosAprendidos = movimientosAprendidos;
+	}
+
 }
