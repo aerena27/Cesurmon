@@ -30,8 +30,4 @@ public class Movimiento {
 
     }
 
-    public void usarMovimiento() {
-
-    }
-
 }
