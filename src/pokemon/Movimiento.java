@@ -8,7 +8,6 @@ public class Movimiento {
         this.resistencia = resistencia;
     }
 
-
     public int getResistencia() {
         return resistencia;
     }
