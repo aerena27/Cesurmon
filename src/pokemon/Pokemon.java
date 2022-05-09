@@ -45,19 +45,11 @@ public class Pokemon {
 		this.movimientos[1] = movimiento2;
 		this.movimientos[2] = movimiento3;
 		this.movimientos[3] = movimiento4;
-
-		if (movimiento1 != null) {
-			movimientosAprendidos.add(movimiento1);
-		}
-		if (movimiento2 != null) {
-			movimientosAprendidos.add(movimiento2);
-		}
-		if (movimiento3 != null) {
-			movimientosAprendidos.add(movimiento3);
-		}
-		if (movimiento4 != null) {
-			movimientosAprendidos.add(movimiento4);
-		}
+		
+		anadirMovimientoAprendido(movimiento1);
+		anadirMovimientoAprendido(movimiento2);
+		anadirMovimientoAprendido(movimiento3);
+		anadirMovimientoAprendido(movimiento4);
 	}
 
 	public int getIdEspecie() {
@@ -186,6 +178,12 @@ public class Pokemon {
 
 	public void setMovimientosAprendidos(ArrayList<Movimiento> movimientosAprendidos) {
 		this.movimientosAprendidos = movimientosAprendidos;
+	}
+
+	public void anadirMovimientoAprendido(Movimiento movimiento) {
+		if (movimiento != null && !movimientosAprendidos.contains(movimiento)) {
+			movimientosAprendidos.add(movimiento);
+		}
 	}
 
 }
