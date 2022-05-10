@@ -32,8 +32,7 @@ public class Combate {
 		System.out.println("Introduce el movimiento que quieres que "+atacante.getEquipo1().getNombreEspecie()+" use");
 		int mov = sc.nextInt();
 		sc.close();
-		
-		//System.out.println("Has elegido +"atacante.getEquipo1().getMovimientos(mov).getNombreHabilidad());
+		System.out.println("Has elegido "+ atacante.getEquipo1().getMovimientos(mov).getNombreHabilidad());
 
 		float ataque = atacante.getEquipo1().getAtaqueFisico() * (1 + atacante.getEquipo1().getAtaqueEspecial());
 		batalla.mensajeAtacante(atacante, ataque);
