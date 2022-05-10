@@ -5,8 +5,8 @@ public class MovimientoMejora extends Movimiento {
     private int mejora;
     private Estadistica estadistica;
 
-    public MovimientoMejora(int resistencia, int mejora, Estadistica estadistica) {
-        super(resistencia);
+    public MovimientoMejora(String nombreHabilidad, int resistencia, int mejora, Estadistica estadistica) {
+        super(nombreHabilidad, resistencia);
         this.mejora = mejora;
         this.estadistica = estadistica;
     }

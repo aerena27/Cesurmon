@@ -166,8 +166,8 @@ public class Pokemon {
 		this.tipo = tipo;
 	}
 
-	public Movimiento[] getMovimientos() {
-		return movimientos;
+	public Movimiento getMovimientos(int i) {
+		return movimientos[i];
 	}
 
 	public void setMovimientos(Movimiento[] movimientos) {

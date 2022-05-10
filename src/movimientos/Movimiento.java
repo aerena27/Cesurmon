@@ -2,10 +2,16 @@ package movimientos;
 
 public class Movimiento {
 
+    private String nombreHabilidad;
     private int resistencia;
 
-    Movimiento(int resistencia) {
+    Movimiento(String nombreHabilidad, int resistencia) {
+        this.nombreHabilidad=nombreHabilidad;
         this.resistencia = resistencia;
+    }
+
+    public String getNombreHabilidad() {
+        return nombreHabilidad;
     }
 
     public int getResistencia() {

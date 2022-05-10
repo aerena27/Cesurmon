@@ -5,8 +5,8 @@ public class MovimientoAtaque extends Movimiento {
     private int potencia;
     private boolean esFisico; // físico o especial
 
-    public MovimientoAtaque(int resistencia, int potencia, boolean esFisico) {
-        super(resistencia);
+    public MovimientoAtaque(String nombreHabilidad, int resistencia, int potencia, boolean esFisico) {
+        super(nombreHabilidad, resistencia);
         this.potencia = potencia;
         this.esFisico = esFisico;
     }

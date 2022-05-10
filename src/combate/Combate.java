@@ -1,11 +1,12 @@
 package combate;
 
+import java.util.Scanner;
 import pokemon.Entrenador;
 import pokemon.Pokemon;
 
 public class Combate {
 
-	private int turno;
+	private Turno turno;
 	private Entrenador jugador;
 	private Entrenador rival;
 	private int koJugador;
@@ -13,7 +14,7 @@ public class Combate {
 
 	public Combate(int turno, Entrenador jugador, Entrenador rival, int koJugador, int koRival) {
 		super();
-		this.turno = turno;
+		this.turno = new Turno(jugador, rival);
 		this.jugador = jugador;
 		this.rival = rival;
 		this.koJugador = koJugador;
@@ -22,19 +23,31 @@ public class Combate {
 
 	public void combatir(Entrenador atacante, Entrenador defensor) {
 
-		Turno batalla = new Turno(atacante, defensor);
-		batalla.incrementoTurno();
-		batalla.getNumeroTurno();
+		turno.incrementoTurno();
+		turno.getNumeroTurno();
+
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Introduce el movimiento que quieres que "+atacante.getEquipo1().getNombreEspecie()+" use (1, 2, 3, 4)");
+		int mov = sc.nextInt() - 1;
+		sc.close();
+		System.out.println("Has elegido "+ atacante.getEquipo1().getMovimientos(mov).getNombreHabilidad());
+		/*
+		int potencia = atacante.getEquipo1().getMovimientos(mov).getPotencia();
+		if(atacante.getEquipo1().getMovimientos(mov).esFisico)
+			float ataque = (potencia + atacante.getEquipo1().getAtaqueFisico()) * (1 + atacante.getEquipo1().getAtaqueEspecial());
+		else
+			float ataque = (atacante.getEquipo1().getAtaqueFisico()) * (1 + potencia + atacante.getEquipo1().getAtaqueEspecial());
+		*/
 		float ataque = atacante.getEquipo1().getAtaqueFisico() * (1 + atacante.getEquipo1().getAtaqueEspecial());
-		batalla.mensajeAtacante(atacante, ataque);
+		turno.mensajeAtacante(atacante, ataque);
 		float defensa = defensor.getEquipo1().getDefensaFisica() * (1 + defensor.getEquipo1().getDefensaEspecial());
 		float vida = defensor.getEquipo1().getPuntosSalud() * (1 + defensor.getEquipo1().getNivel());
-		batalla.mensajeDefensor(defensor, vida);
+		turno.mensajeDefensor(defensor, vida);
 		vida = vida - (ataque - defensa) * logicaTipos(atacante.getEquipo1(), defensor.getEquipo1());
-		batalla.mensajeDefensor(defensor, vida);
+		turno.mensajeDefensor(defensor, vida);
 
 		// if (vida <= 0)
-		batalla.mostrarGanador(atacante);
+		turno.mostrarGanador(atacante);
 	}
 
 
@@ -193,12 +206,8 @@ public class Combate {
 		return efectividad[a][d];
 	}
 
-	public int getTurno() {
+	public Turno getTurno() {
 		return turno;
-	}
-
-	public void setTurno(int turno) {
-		this.turno = turno;
 	}
 
 	public Entrenador getJugador() {
