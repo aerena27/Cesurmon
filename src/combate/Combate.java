@@ -1,5 +1,7 @@
 package combate;
 
+import java.util.Scanner;
+
 import pokemon.Entrenador;
 import pokemon.Pokemon;
 
@@ -26,7 +28,13 @@ public class Combate {
 		batalla.incrementoTurno();
 		batalla.getNumeroTurno();
 
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Introduce el movimiento que quieres que "+atacante.getEquipo1().getNombreEspecie()+" use");
+		int mov = sc.nextInt();
+		sc.close();
 		
+		//System.out.println("Has elegido +"atacante.getEquipo1().getMovimientos(mov).getNombreHabilidad());
+
 		float ataque = atacante.getEquipo1().getAtaqueFisico() * (1 + atacante.getEquipo1().getAtaqueEspecial());
 		batalla.mensajeAtacante(atacante, ataque);
 		float defensa = defensor.getEquipo1().getDefensaFisica() * (1 + defensor.getEquipo1().getDefensaEspecial());
