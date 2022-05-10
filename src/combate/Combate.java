@@ -25,6 +25,8 @@ public class Combate {
 		Turno batalla = new Turno(atacante, defensor);
 		batalla.incrementoTurno();
 		batalla.getNumeroTurno();
+
+		
 		float ataque = atacante.getEquipo1().getAtaqueFisico() * (1 + atacante.getEquipo1().getAtaqueEspecial());
 		batalla.mensajeAtacante(atacante, ataque);
 		float defensa = defensor.getEquipo1().getDefensaFisica() * (1 + defensor.getEquipo1().getDefensaEspecial());
