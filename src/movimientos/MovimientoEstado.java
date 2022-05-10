@@ -1,4 +1,6 @@
-package pokemon;
+package movimientos;
+
+import combate.Estado;
 
 public class MovimientoEstado extends Movimiento {
 

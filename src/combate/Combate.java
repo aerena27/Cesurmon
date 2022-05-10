@@ -1,4 +1,7 @@
-package pokemon;
+package combate;
+
+import pokemon.Entrenador;
+import pokemon.Pokemon;
 
 public class Combate {
 
