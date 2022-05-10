@@ -1,14 +1,13 @@
 package main;
 
-import pokemon.Combate;
+import combate.Combate;
+import combate.Estado;
+import combate.Tipo;
+import movimientos.MovimientoAtaque;
 import pokemon.Entrenador;
-import pokemon.Estado;
-//import pokemon.Movimiento;
-import pokemon.MovimientoAtaque;
 //import pokemon.MovimientoMejora;
 //import pokemon.MovimientoEstado;
 import pokemon.Pokemon;
-import pokemon.Tipo;
 
 public class Main {
 

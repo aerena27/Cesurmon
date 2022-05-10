@@ -2,6 +2,10 @@ package pokemon;
 
 import java.util.ArrayList;
 
+import combate.Estado;
+import combate.Tipo;
+import movimientos.Movimiento;
+
 public class Pokemon {
 
 	private int idEspecie;
