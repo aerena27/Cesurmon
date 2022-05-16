@@ -1,6 +1,6 @@
 package movimientos;
 
-public class Movimiento {
+public abstract class Movimiento {
 
     private String nombreHabilidad;
     private int resistencia;

@@ -2,7 +2,7 @@ package movimientos;
 
 import combate.Estado;
 
-public class MovimientoEstado extends Movimiento {
+public abstract class MovimientoEstado extends Movimiento {
 
     private Estado estado;
 

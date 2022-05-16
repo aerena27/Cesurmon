@@ -26,7 +26,8 @@ public class Pokemon {
 	private ArrayList<Movimiento> movimientosAprendidos;
 
 	public Pokemon(int idEspecie, String nombreEspecie, int puntosSalud, int ataqueFisico,
-			int defensaFisica, int ataqueEspecial, int defensaEspecial, int velocidad, int nivel, int experiencia, Estado estado, Tipo tipo, Movimiento movimiento1, Movimiento movimiento2,
+			int defensaFisica, int ataqueEspecial, int defensaEspecial, int velocidad, int nivel, int experiencia,
+			Estado estado, Tipo tipo, Movimiento movimiento1, Movimiento movimiento2,
 			Movimiento movimiento3, Movimiento movimiento4) {
 		super();
 		this.idEspecie = idEspecie;
@@ -47,10 +48,13 @@ public class Pokemon {
 		this.movimientos[1] = movimiento2;
 		this.movimientos[2] = movimiento3;
 		this.movimientos[3] = movimiento4;
-		//anadirMovimientoAprendido(movimiento1);
-		//anadirMovimientoAprendido(movimiento2);
-		//anadirMovimientoAprendido(movimiento3);
-		//anadirMovimientoAprendido(movimiento4);
+
+		movimientosAprendidos = new ArrayList<Movimiento>();
+
+		anadirMovimientoAprendido(movimiento1);
+		anadirMovimientoAprendido(movimiento2);
+		anadirMovimientoAprendido(movimiento3);
+		anadirMovimientoAprendido(movimiento4);
 
 	}
 
@@ -183,9 +187,8 @@ public class Pokemon {
 	}
 
 	public void anadirMovimientoAprendido(Movimiento movimiento) {
-		if (movimiento != null && !movimientosAprendidos.contains(movimiento)) {
+		if (movimiento != null && movimientosAprendidos.contains(movimiento) == false) {
 			movimientosAprendidos.add(movimiento);
 		}
 	}
-
 }

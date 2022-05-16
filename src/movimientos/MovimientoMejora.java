@@ -1,14 +1,13 @@
 package movimientos;
 
-public class MovimientoMejora extends Movimiento {
+public abstract class MovimientoMejora extends Movimiento {
 
     private int mejora;
     private Estadistica estadistica;
 
-    public MovimientoMejora(String nombreHabilidad, int resistencia, int mejora, Estadistica estadistica) {
+    public MovimientoMejora(String nombreHabilidad, int resistencia, int mejora) {
         super(nombreHabilidad, resistencia);
         this.mejora = mejora;
-        this.estadistica = estadistica;
     }
 
     public int getMejora() {

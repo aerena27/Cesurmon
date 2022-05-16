@@ -2,7 +2,6 @@ package combate;
 
 import java.util.Scanner;
 
-import movimientos.MovimientoAtaque;
 import pokemon.Entrenador;
 import pokemon.Pokemon;
 
@@ -33,14 +32,12 @@ public class Combate {
 		int mov = sc.nextInt() - 1;
 		sc.close();
 		System.out.println("Has elegido "+ atacante.getEquipo1().getMovimientos(mov).getNombreHabilidad());
-		
-		int potencia = ((MovimientoAtaque) atacante.getEquipo1().getMovimientos(mov)).getPotencia();
 		float ataque = 0;
 
-		if(((MovimientoAtaque) atacante.getEquipo1().getMovimientos(mov)).getEsFisico())
-			ataque = (potencia + atacante.getEquipo1().getAtaqueFisico()) * (1 + atacante.getEquipo1().getAtaqueEspecial());
-		else
-			ataque = (atacante.getEquipo1().getAtaqueFisico()) * (1 + potencia + atacante.getEquipo1().getAtaqueEspecial());
+		//if(((MovimientoAtaque) atacante.getEquipo1().getMovimientos(mov)).getEsFisico())
+			ataque = (atacante.getEquipo1().getAtaqueFisico()) * (1 + atacante.getEquipo1().getAtaqueEspecial());
+		// else
+			//ataque = (atacante.getEquipo1().getAtaqueFisico()) * (1 + potencia + atacante.getEquipo1().getAtaqueEspecial());
 		
 		ataque = atacante.getEquipo1().getAtaqueFisico() * (1 + atacante.getEquipo1().getAtaqueEspecial());
 		turno.mensajeAtacante(atacante, ataque);
