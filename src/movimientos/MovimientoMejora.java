@@ -2,27 +2,18 @@ package movimientos;
 
 public abstract class MovimientoMejora extends Movimiento {
 
-    private int mejora;
-    private Estadistica estadistica;
+    private int turnosMejora;
 
-    public MovimientoMejora(String nombreHabilidad, int resistencia, int mejora) {
+    public MovimientoMejora(String nombreHabilidad, int resistencia, int turnosMejora) {
         super(nombreHabilidad, resistencia);
-        this.mejora = mejora;
+        this.turnosMejora = turnosMejora;
     }
 
-    public int getMejora() {
-        return mejora;
+    public int getTurnosMejora() {
+        return turnosMejora;
     }
 
-    public void setMejora(int mejora) {
-        this.mejora = mejora;
-    }
-
-    public Estadistica getEstadistica() {
-        return estadistica;
-    }
-
-    public void setEstadistica(Estadistica estadistica) {
-        this.estadistica = estadistica;
+    public void setTurnosMejora(int turnosMejora) {
+        this.turnosMejora = turnosMejora;
     }
 }

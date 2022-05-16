@@ -1,5 +1,7 @@
 package movimientos;
 
+import pokemon.Pokemon;
+
 public abstract class Movimiento {
 
     private String nombreHabilidad;
@@ -23,6 +25,10 @@ public abstract class Movimiento {
     }
 
     public void consumirResistencia() {
+
+    }
+
+    public void usarMovimiento(Pokemon atacante, Pokemon defensor) {
 
     }
 

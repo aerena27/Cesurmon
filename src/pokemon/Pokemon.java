@@ -21,6 +21,7 @@ public class Pokemon {
 	private int experiencia;
 	private int fertilidad;
 	private Estado estado;
+	private int turnosParado;
 	private Tipo tipo;
 	private Movimiento[] movimientos;
 	private ArrayList<Movimiento> movimientosAprendidos;
@@ -42,6 +43,7 @@ public class Pokemon {
 		this.experiencia = experiencia;
 		this.fertilidad = 5;
 		this.estado = estado;
+		this.turnosParado = 0;
 		this.tipo = tipo;
 		this.movimientos = new Movimiento[4];
 		this.movimientos[0] = movimiento1;
@@ -160,6 +162,14 @@ public class Pokemon {
 
 	public void setEstado(Estado estado) {
 		this.estado = estado;
+	}
+
+	public int getTurnosParado() {
+		return turnosParado;
+	}
+
+	public void setTurnosParado(int turnosParado) {
+		this.turnosParado = turnosParado;
 	}
 
 	public Tipo getTipo1() {

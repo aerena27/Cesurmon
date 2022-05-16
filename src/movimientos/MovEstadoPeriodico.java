@@ -1,6 +1,7 @@
 package movimientos;
 
 import combate.Estado;
+import pokemon.Pokemon;
 
 public class MovEstadoPeriodico extends MovimientoEstado {
 
@@ -8,7 +9,12 @@ public class MovEstadoPeriodico extends MovimientoEstado {
 
     public MovEstadoPeriodico(String nombreHabilidad, int resistencia, Estado estado) {
         super(nombreHabilidad, resistencia, estado);
-        // TODO Auto-generated constructor stub
+    }
+
+    @Override
+    public void usarMovimiento(Pokemon atacante, Pokemon defensor) {
+        defensor.setEstado(getEstado());
+    
     }
 
 }
