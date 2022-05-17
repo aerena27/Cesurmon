@@ -1,9 +1,11 @@
 package movimientos;
 
+import combate.Tipo;
+
 public class MovMejoraVelocidad extends MovimientoMejora{
 
-    public MovMejoraVelocidad(String nombreHabilidad, int resistencia, int mejora) {
-        super(nombreHabilidad, resistencia, mejora);
+    public MovMejoraVelocidad(Tipo tipo, String nombreHabilidad, int resistencia, int mejora) {
+        super(tipo, nombreHabilidad, resistencia, mejora);
         //TODO Auto-generated constructor stub
     }
     

@@ -1,15 +1,25 @@
 package movimientos;
 
+import combate.Tipo;
 import pokemon.Pokemon;
 
 public abstract class Movimiento {
 
+    private Tipo tipo;
     private String nombreHabilidad;
     private int resistencia;
 
-    Movimiento(String nombreHabilidad, int resistencia) {
-        this.nombreHabilidad=nombreHabilidad;
+    Movimiento(Tipo tipo, String nombreHabilidad, int resistencia) {
+        this.nombreHabilidad = nombreHabilidad;
         this.resistencia = resistencia;
+    }
+
+    public Tipo getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(Tipo tipo) {
+        this.tipo = tipo;
     }
 
     public String getNombreHabilidad() {

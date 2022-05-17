@@ -1,6 +1,7 @@
 package movimientos;
 
 import combate.Estado;
+import combate.Tipo;
 import pokemon.Pokemon;
 
 public class MovEstadoAplicarElem extends MovimientoEstado {
@@ -8,9 +9,9 @@ public class MovEstadoAplicarElem extends MovimientoEstado {
     // Torbellino, mojado, electrificado, enfriado
     private Estado elemento;
 
-    public MovEstadoAplicarElem(String nombreHabilidad, int resistencia, Estado estado) {
-        super(nombreHabilidad, resistencia, estado);
-        // TODO Auto-generated constructor stub
+    public MovEstadoAplicarElem(Tipo tipo, String nombreHabilidad, int resistencia, Estado estado) {
+        super(tipo, nombreHabilidad, resistencia, estado);
+        
     }
 
     @Override

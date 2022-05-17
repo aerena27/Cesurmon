@@ -1,11 +1,13 @@
 package movimientos;
 
+import combate.Tipo;
+
 public abstract class MovimientoMejora extends Movimiento {
 
     private int turnosMejora;
 
-    public MovimientoMejora(String nombreHabilidad, int resistencia, int turnosMejora) {
-        super(nombreHabilidad, resistencia);
+    public MovimientoMejora(Tipo tipo, String nombreHabilidad, int resistencia, int turnosMejora) {
+        super(null, nombreHabilidad, resistencia);
         this.turnosMejora = turnosMejora;
     }
 
