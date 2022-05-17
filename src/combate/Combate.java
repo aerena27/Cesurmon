@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+import movimientos.MovMejoraAtaqueF;
 import movimientos.Movimiento;
 import pokemon.Entrenador;
 import pokemon.Pokemon;
@@ -32,23 +33,31 @@ public class Combate {
 		this.koRival = koRival;
 	}
 
+	// Método donde se realice todo el combate en su totalidad
+	public void iniciarCombate() {
+
+		// Grabar los logs acá
+	}
+
+	// Método donde se realizará la acción de todo el turno
 	public void combatir(Entrenador atacante, Entrenador defensor) {
-		setNumeroTurno(this.numeroTurno++);
 
 		Pokemon pokeAtacante = atacante.sacarPokemon();
 		Pokemon pokeDefensor = defensor.sacarPokemon();
+		Movimiento movimientoAtacante;
+		Movimiento movimientoDefensor;
 
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Introduce el movimiento que quieres que " + pokeAtacante
 				+ " use (1, 2, 3, 4)");
-		Movimiento movimientoAtacante = pokeAtacante.getMovimiento(sc.nextInt() - 1);
+		movimientoAtacante = pokeAtacante.getMovimiento(sc.nextInt() - 1);
 		sc.close();
-		
-		System.out.println("Has elegido " + movimientoAtacante.getNombreHabilidad());
-		float ataque = 0;
 
-		// if(((MovimientoAtaque)
-		// atacante.getEquipo1().getMovimientos(mov)).getEsFisico())
+		System.out.println(mensajeAtacante(pokeAtacante, movimientoAtacante));
+		// float ataque = 0;
+
+		// if (((MovimientoAtaque)
+		// atacante.getEquipo1().getMovimientos(movimientoAtacante)).getEsFisico())
 		// ataque = (atacante.getEquipo1().getAtaqueFisico()) * (1 +
 		// atacante.getEquipo1().getAtaqueEspecial());
 		// else
@@ -57,7 +66,9 @@ public class Combate {
 
 		// ataque = atacante.getEquipo1().getAtaqueFisico() * (1 +
 		// atacante.getEquipo1().getAtaqueEspecial());
+
 		// turno.mensajeAtacante(atacante, ataque);
+
 		// float defensa = defensor.getEquipo1().getDefensaFisica() * (1 +
 		// defensor.getEquipo1().getDefensaEspecial());
 		// float vida = defensor.getEquipo1().getPuntosSalud() * (1 +
@@ -67,12 +78,10 @@ public class Combate {
 		// defensor.getEquipo1());
 		// turno.mensajeDefensor(defensor, vida);
 
-		// if (vida <= 0)
+		// if (vida <= 0) {
 		// turno.mostrarGanador(atacante);
-		
-		Turno turno = new Turno(getNumeroTurno(), "placeholder", "placeholder");
-		turno.setAccionEntrenador(turno.mensajeAtacanteLog(pokeAtacante, movimientoAtacante));
-		addTurnos(turno);
+		// }
+
 	}
 
 	public String mensajeAtacante(Pokemon pokeAtacante, Movimiento movimiento) {
@@ -146,7 +155,7 @@ public class Combate {
 
 	}
 
-	public int convertirTipo(Tipo elemento) {
+	public static int convertirTipo(Tipo elemento) {
 
 		if (elemento == Tipo.NORMAL)
 			return 0;
@@ -178,9 +187,10 @@ public class Combate {
 		return -1;
 	}
 
-	public float logicaTipos(Pokemon atacante, Pokemon defensor) {
+	// Bono o reducción de daño por tipos de movimientos
+	public static float logicaTipos(Movimiento atacante, Pokemon defensor) {
 
-		int a = convertirTipo(atacante.getTipo1());
+		int a = convertirTipo(atacante.getTipo());
 		int d = convertirTipo(defensor.getTipo1());
 
 		/*
