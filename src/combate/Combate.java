@@ -33,7 +33,7 @@ public class Combate {
 		this.koRival = koRival;
 	}
 
-	// Método donde se realice todo el combate en su totalidad
+	// Método donde se realice todo el combate en su totalidad en bucle
 	public void iniciarCombate() {
 
 		// Grabar los logs acá
@@ -41,6 +41,9 @@ public class Combate {
 
 	// Método donde se realizará la acción de todo el turno
 	public void combatir(Entrenador atacante, Entrenador defensor) {
+
+		// TODO: Comprobar qué velocidad es mayor para quién empieza antes
+		// TODO: Toda la acción de usar movimientos
 
 		Pokemon pokeAtacante = atacante.sacarPokemon();
 		Pokemon pokeDefensor = defensor.sacarPokemon();
