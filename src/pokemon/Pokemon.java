@@ -1,6 +1,8 @@
 package pokemon;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 import combate.Estado;
 import combate.Tipo;
@@ -12,6 +14,7 @@ public class Pokemon {
 	private String nombreEspecie;
 	private String mote;
 	private int puntosSalud;
+	private int puntosSaludCombate;
 	private int ataqueFisico;
 	private int defensaFisica;
 	private int ataqueEspecial;
@@ -23,14 +26,18 @@ public class Pokemon {
 	private Estado estado;
 	private int turnosParado;
 	private Tipo tipo;
-	private Movimiento[] movimientos;
-	private ArrayList<Movimiento> movimientosAprendidos;
+	private List<Movimiento> movimientos;
+	private List<Movimiento> movimientosAprendidos;
 
 	public Pokemon(int idEspecie, String nombreEspecie, int puntosSalud, int ataqueFisico,
 			int defensaFisica, int ataqueEspecial, int defensaEspecial, int velocidad, int nivel, int experiencia,
 			Estado estado, Tipo tipo, Movimiento movimiento1, Movimiento movimiento2,
 			Movimiento movimiento3, Movimiento movimiento4) {
 		super();
+
+		movimientos = new LinkedList<>();
+		movimientosAprendidos = new LinkedList<>();
+
 		this.idEspecie = idEspecie;
 		this.nombreEspecie = nombreEspecie;
 		this.puntosSalud = puntosSalud;
@@ -45,11 +52,10 @@ public class Pokemon {
 		this.estado = estado;
 		this.turnosParado = 0;
 		this.tipo = tipo;
-		this.movimientos = new Movimiento[4];
-		this.movimientos[0] = movimiento1;
-		this.movimientos[1] = movimiento2;
-		this.movimientos[2] = movimiento3;
-		this.movimientos[3] = movimiento4;
+		movimientos.add(movimiento1);
+		movimientos.add(movimiento2);
+		movimientos.add(movimiento3);
+		movimientos.add(movimiento4);
 
 		movimientosAprendidos = new ArrayList<Movimiento>();
 
@@ -90,6 +96,14 @@ public class Pokemon {
 
 	public void setPuntosSalud(int puntosSalud) {
 		this.puntosSalud = puntosSalud;
+	}
+
+	public int getPuntosSaludCombate() {
+		return puntosSaludCombate;
+	}
+
+	public void setPuntosSaludCombate(int puntosSaludCombate) {
+		this.puntosSaludCombate = puntosSaludCombate;
 	}
 
 	public int getAtaqueFisico() {
@@ -180,20 +194,16 @@ public class Pokemon {
 		this.tipo = tipo;
 	}
 
-	public Movimiento getMovimientos(int i) {
-		return movimientos[i];
+	public List<Movimiento> getMovimientos() {
+		return movimientos;
 	}
 
-	public void setMovimientos(Movimiento[] movimientos) {
-		this.movimientos = movimientos;
+	public Movimiento getMovimiento(int i) {
+		return movimientos.get(i);
 	}
 
-	public ArrayList<Movimiento> getMovimientosAprendidos() {
+	public List<Movimiento> getMovimientosAprendidos() {
 		return movimientosAprendidos;
-	}
-
-	public void setMovimientosAprendidos(ArrayList<Movimiento> movimientosAprendidos) {
-		this.movimientosAprendidos = movimientosAprendidos;
 	}
 
 	public void anadirMovimientoAprendido(Movimiento movimiento) {

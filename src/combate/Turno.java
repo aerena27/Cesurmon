@@ -1,6 +1,8 @@
 package combate;
 
+import movimientos.Movimiento;
 import pokemon.Entrenador;
+import pokemon.Pokemon;
 
 public class Turno {
 
@@ -16,12 +18,13 @@ public class Turno {
         this.accionRival = accionRival;
     }
 
-    public void mensajeAtacante(Entrenador atacante, float ataque) {
-        System.out.println("El ataque de " + atacante.getEquipo1().getNombreEspecie() + " es: " + ataque);
-    }
+    public String mensajeAtacanteLog(Pokemon pokeAtacante, Movimiento movimiento) {
+		return pokeAtacante.getNombreEspecie() + " ha usado " + movimiento.getNombreHabilidad();
+	}
 
     public void mensajeDefensor(Entrenador defensor, float vida) {
-        System.out.println("La vida de " + defensor.getEquipo1().getNombreEspecie() + " es: " + vida);
+        // System.out.println("La vida de " + defensor.getEquipo1().getNombreEspecie() +
+        // " es: " + vida);
     }
 
     public void mostrarGanador(Entrenador ganador) {

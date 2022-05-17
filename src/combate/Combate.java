@@ -8,12 +8,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+import movimientos.Movimiento;
 import pokemon.Entrenador;
 import pokemon.Pokemon;
 
 public class Combate {
 
 	private List<Turno> turnos;
+	private int numeroTurno;
 	private Entrenador jugador;
 	private Entrenador rival;
 	private int koJugador;
@@ -22,6 +24,7 @@ public class Combate {
 
 	public Combate(Entrenador jugador, Entrenador rival, int koJugador, int koRival) {
 		super();
+		numeroTurno = 0;
 		turnos = new LinkedList<>();
 		this.jugador = jugador;
 		this.rival = rival;
@@ -30,36 +33,117 @@ public class Combate {
 	}
 
 	public void combatir(Entrenador atacante, Entrenador defensor) {
+		setNumeroTurno(this.numeroTurno++);
 
-		
-		//turno.incrementoTurno();
-		//turno.getNumeroTurno();
+		Pokemon pokeAtacante = atacante.sacarPokemon();
+		Pokemon pokeDefensor = defensor.sacarPokemon();
 
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Introduce el movimiento que quieres que " + atacante.getEquipo1().getNombreEspecie()
+		System.out.println("Introduce el movimiento que quieres que " + pokeAtacante
 				+ " use (1, 2, 3, 4)");
-		int mov = sc.nextInt() - 1;
+		Movimiento movimientoAtacante = pokeAtacante.getMovimiento(sc.nextInt() - 1);
 		sc.close();
-		System.out.println("Has elegido " + atacante.getEquipo1().getMovimientos(mov).getNombreHabilidad());
+		
+		System.out.println("Has elegido " + movimientoAtacante.getNombreHabilidad());
 		float ataque = 0;
 
 		// if(((MovimientoAtaque)
 		// atacante.getEquipo1().getMovimientos(mov)).getEsFisico())
-		ataque = (atacante.getEquipo1().getAtaqueFisico()) * (1 + atacante.getEquipo1().getAtaqueEspecial());
+		// ataque = (atacante.getEquipo1().getAtaqueFisico()) * (1 +
+		// atacante.getEquipo1().getAtaqueEspecial());
 		// else
 		// ataque = (atacante.getEquipo1().getAtaqueFisico()) * (1 + potencia +
 		// atacante.getEquipo1().getAtaqueEspecial());
 
-		ataque = atacante.getEquipo1().getAtaqueFisico() * (1 + atacante.getEquipo1().getAtaqueEspecial());
-		//turno.mensajeAtacante(atacante, ataque);
-		float defensa = defensor.getEquipo1().getDefensaFisica() * (1 + defensor.getEquipo1().getDefensaEspecial());
-		float vida = defensor.getEquipo1().getPuntosSalud() * (1 + defensor.getEquipo1().getNivel());
-		//turno.mensajeDefensor(defensor, vida);
-		vida = vida - (ataque - defensa) * logicaTipos(atacante.getEquipo1(), defensor.getEquipo1());
-		//turno.mensajeDefensor(defensor, vida);
+		// ataque = atacante.getEquipo1().getAtaqueFisico() * (1 +
+		// atacante.getEquipo1().getAtaqueEspecial());
+		// turno.mensajeAtacante(atacante, ataque);
+		// float defensa = defensor.getEquipo1().getDefensaFisica() * (1 +
+		// defensor.getEquipo1().getDefensaEspecial());
+		// float vida = defensor.getEquipo1().getPuntosSalud() * (1 +
+		// defensor.getEquipo1().getNivel());
+		// turno.mensajeDefensor(defensor, vida);
+		// vida = vida - (ataque - defensa) * logicaTipos(atacante.getEquipo1(),
+		// defensor.getEquipo1());
+		// turno.mensajeDefensor(defensor, vida);
 
 		// if (vida <= 0)
-		//turno.mostrarGanador(atacante);
+		// turno.mostrarGanador(atacante);
+		
+		Turno turno = new Turno(getNumeroTurno(), "placeholder", "placeholder");
+		turno.setAccionEntrenador(turno.mensajeAtacanteLog(pokeAtacante, movimientoAtacante));
+		addTurnos(turno);
+	}
+
+	public String mensajeAtacante(Pokemon pokeAtacante, Movimiento movimiento) {
+		return "¡" + pokeAtacante.getNombreEspecie() + " ha usado " + movimiento.getNombreHabilidad() + "!";
+	}
+
+	public int getNumeroTurno() {
+		return this.numeroTurno;
+	}
+
+	public void setNumeroTurno(int numeroTurno) {
+		this.numeroTurno = numeroTurno;
+	}
+
+	public Entrenador getJugador() {
+		return jugador;
+	}
+
+	public void setJugador(Entrenador jugador) {
+		this.jugador = jugador;
+	}
+
+	public Entrenador getRival() {
+		return rival;
+	}
+
+	public void setRival(Entrenador rival) {
+		this.rival = rival;
+	}
+
+	public int getKoJugador() {
+		return koJugador;
+	}
+
+	public void setKoJugador(int koJugador) {
+		this.koJugador = koJugador;
+	}
+
+	public int getKoRival() {
+		return koRival;
+	}
+
+	public void setKoRival(int koRival) {
+		this.koRival = koRival;
+	}
+
+	public List<Turno> getTurnos() {
+		return turnos;
+	}
+
+	public void addTurnos(Turno turno) {
+		this.turnos.add(turno);
+	}
+
+	public void escribirCombate() {
+		File fichero = new File(PATH_LOG);
+		try {
+			FileWriter fw = new FileWriter(fichero);
+			BufferedWriter bw = new BufferedWriter(fw);
+
+			for (Turno turno : turnos) {
+				bw.write("Turno: " + turno.getNumeroTurno() + "\n");
+				bw.write("Entrenador: " + turno.getAccionEntrenador() + "\n");
+				bw.write("Rival: " + turno.getAccionRival() + "\n");
+			}
+			bw.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	public int convertirTipo(Tipo elemento) {
@@ -213,65 +297,6 @@ public class Combate {
 		efectividad[8][8] = 0.5f; // GEO
 
 		return efectividad[a][d];
-	}
-
-	public Entrenador getJugador() {
-		return jugador;
-	}
-
-	public void setJugador(Entrenador jugador) {
-		this.jugador = jugador;
-	}
-
-	public Entrenador getRival() {
-		return rival;
-	}
-
-	public void setRival(Entrenador rival) {
-		this.rival = rival;
-	}
-
-	public int getKoJugador() {
-		return koJugador;
-	}
-
-	public void setKoJugador(int koJugador) {
-		this.koJugador = koJugador;
-	}
-
-	public int getKoRival() {
-		return koRival;
-	}
-
-	public void setKoRival(int koRival) {
-		this.koRival = koRival;
-	}
-
-	public List<Turno> getTurnos() {
-		return turnos;
-	}
-
-	public void addTurnos(Turno turno) {
-		this.turnos.add(turno);
-	}
-
-	public void escribirCombate() {
-		File fichero = new File(PATH_LOG);
-		try {
-			FileWriter fw = new FileWriter(fichero);
-			BufferedWriter bw = new BufferedWriter(fw);
-
-			for (Turno turno : turnos) {
-				bw.write("Turno: " + turno.getNumeroTurno() + "\n");
-				bw.write("Entrenador: " + turno.getAccionEntrenador() + "\n");
-				bw.write("Rival: " + turno.getAccionRival());
-			}
-			bw.close();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
 	}
 
 }
