@@ -7,12 +7,7 @@ public class MovAtaqueFisico extends MovimientoAtaque {
 
     public MovAtaqueFisico(Tipo tipo, String nombreHabilidad, int resistencia, int potencia) {
         super(tipo, nombreHabilidad, resistencia, potencia);
-        
 
     }
-
-
-
-    
 
 }

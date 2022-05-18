@@ -1,5 +1,6 @@
 package movimientos;
 
+import combate.Estado;
 import combate.Tipo;
 import pokemon.Pokemon;
 
@@ -38,8 +39,15 @@ public abstract class Movimiento {
         atacante.setResistencia(atacante.getResistencia() - getResistencia());
     }
 
-    public void checkVentaja(Pokemon defensor) {
-        // return enum Efectividad
+    public Efectividad checkVentaja(Pokemon defensor) {
+        float potenciador = logicaTipos(defensor);
+        if (potenciador == 1.0) {
+            return Efectividad.NEUTRO;
+        } else if (potenciador > 1.0) {
+            return Efectividad.VENTAJA;
+        } else {
+            return Efectividad.DESVENTAJA;
+        }
     }
 
     public void usarMovimiento(Pokemon atacante, Pokemon defensor) {
@@ -111,7 +119,7 @@ public abstract class Movimiento {
 
         // DENDRO
         efectividad[1][0] = 1f; // NORMAL
-        efectividad[1][1] = 1f; // DENDRO
+        efectividad[1][1] = 0.5f; // DENDRO
         efectividad[1][2] = 0.5f; // PYRO
         efectividad[1][3] = 1f; // CRYO
         efectividad[1][4] = 1.5f; // HYDRO
@@ -123,7 +131,7 @@ public abstract class Movimiento {
         // PYRO
         efectividad[2][0] = 1f; // NORMAL
         efectividad[2][1] = 2f; // DENDRO
-        efectividad[2][2] = 1f; // PYRO
+        efectividad[2][2] = 0.5f; // PYRO
         efectividad[2][3] = 2f; // CRYO
         efectividad[2][4] = 1.5f; // HYDRO
         efectividad[2][5] = 1f; // ANEMO
@@ -135,7 +143,7 @@ public abstract class Movimiento {
         efectividad[3][0] = 1f; // NORMAL
         efectividad[3][1] = 1f; // DENDRO
         efectividad[3][2] = 1.5f; // PYRO
-        efectividad[3][3] = 1f; // CRYO
+        efectividad[3][3] = 0.5f; // CRYO
         efectividad[3][4] = 2f; // HYDRO
         efectividad[3][5] = 1f; // ANEMO
         efectividad[3][6] = 1.5f; // ELECTRO
@@ -147,7 +155,7 @@ public abstract class Movimiento {
         efectividad[4][1] = 1.5f; // DENDRO
         efectividad[4][2] = 2f; // PYRO
         efectividad[4][3] = 0.5f; // CRYO
-        efectividad[4][4] = 1f; // HYDRO
+        efectividad[4][4] = 0.5f; // HYDRO
         efectividad[4][5] = 1f; // ANEMO
         efectividad[4][6] = 1.5f; // ELECTRO
         efectividad[4][7] = 1.5f; // SECTO
@@ -171,7 +179,7 @@ public abstract class Movimiento {
         efectividad[6][3] = 1.5f; // CRYO
         efectividad[6][4] = 1.5f; // HYDRO
         efectividad[6][5] = 1f; // ANEMO
-        efectividad[6][6] = 1f; // ELECTRO
+        efectividad[6][6] = 0.5f; // ELECTRO
         efectividad[6][7] = 2f; // SECTO
         efectividad[6][8] = 1f; // GEO
 
@@ -183,7 +191,7 @@ public abstract class Movimiento {
         efectividad[7][4] = 1.5f; // HYDRO
         efectividad[7][5] = 2f; // ANEMO
         efectividad[7][6] = 0.5f; // ELECTRO
-        efectividad[7][7] = 1f; // SECTO
+        efectividad[7][7] = 0.5f; // SECTO
         efectividad[7][8] = 1f; // GEO
 
         // GEO
