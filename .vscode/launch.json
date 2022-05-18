@@ -23,7 +23,7 @@
             "request": "launch",
             "mainClass": "modelo.App",
             "projectName": "Cesurmon_62b67076",
-            "vmArgs": "--module-path=C:/Cesurmon/lib --add-modules=javafx.controls,javafx.fxml"
+            "vmArgs": "--module-path=C:/javafx-sdk-18.0.1/lib --add-modules=javafx.controls,javafx.fxml"
         }
     ]
 }

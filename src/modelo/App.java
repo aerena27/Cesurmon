@@ -16,7 +16,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("./vistas/menuPrincipal.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../vistas/menuPrincipal.fxml"));
             Scene scene = new Scene(root);
 
             primaryStage.setScene(scene);
