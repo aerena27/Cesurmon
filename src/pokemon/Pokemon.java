@@ -26,6 +26,7 @@ public class Pokemon {
 	private Estado estado;
 	private int turnosParado;
 	private Tipo tipo;
+	private int resistencia;
 	private List<Movimiento> movimientos;
 	private List<Movimiento> movimientosAprendidos;
 
@@ -52,6 +53,7 @@ public class Pokemon {
 		this.estado = estado;
 		this.turnosParado = 0;
 		this.tipo = tipo;
+		this.resistencia = 10;
 		movimientos.add(movimiento1);
 		movimientos.add(movimiento2);
 		movimientos.add(movimiento3);
@@ -194,6 +196,14 @@ public class Pokemon {
 		this.tipo = tipo;
 	}
 
+	public int getResistencia() {
+		return resistencia;
+	}
+
+	public void setResistencia(int resistencia) {
+		this.resistencia = resistencia;
+	}
+
 	public List<Movimiento> getMovimientos() {
 		return movimientos;
 	}
@@ -210,5 +220,9 @@ public class Pokemon {
 		if (movimiento != null && movimientosAprendidos.contains(movimiento) == false) {
 			movimientosAprendidos.add(movimiento);
 		}
+	}
+
+	public void descansar() {
+		setResistencia(10);
 	}
 }

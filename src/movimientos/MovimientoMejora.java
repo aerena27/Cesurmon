@@ -8,6 +8,9 @@ public abstract class MovimientoMejora extends Movimiento {
 
     public MovimientoMejora(Tipo tipo, String nombreHabilidad, int resistencia, int turnosMejora) {
         super(null, nombreHabilidad, resistencia);
+        this.tipo = tipo;
+        this.nombreHabilidad = nombreHabilidad;
+        this.resistencia = resistencia;
         this.turnosMejora = turnosMejora;
     }
 

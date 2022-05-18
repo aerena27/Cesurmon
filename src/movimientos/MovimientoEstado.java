@@ -9,6 +9,9 @@ public abstract class MovimientoEstado extends Movimiento {
 
     public MovimientoEstado(Tipo tipo, String nombreHabilidad, int resistencia, Estado estado) {
         super(tipo, nombreHabilidad, resistencia);
+        this.tipo = tipo;
+        this.nombreHabilidad = nombreHabilidad;
+        this.resistencia = resistencia;
         this.estado = estado;
     }
 
