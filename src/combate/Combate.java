@@ -57,34 +57,7 @@ public class Combate {
 		sc.close();
 
 		System.out.println(mensajeAtacante(pokeAtacante, movimientoAtacante));
-		// float ataque = 0;
-
-		// if (((MovimientoAtaque)
-		// atacante.getEquipo1().getMovimientos(movimientoAtacante)).getEsFisico())
-		// ataque = (atacante.getEquipo1().getAtaqueFisico()) * (1 +
-		// atacante.getEquipo1().getAtaqueEspecial());
-		// else
-		// ataque = (atacante.getEquipo1().getAtaqueFisico()) * (1 + potencia +
-		// atacante.getEquipo1().getAtaqueEspecial());
-
-		// ataque = atacante.getEquipo1().getAtaqueFisico() * (1 +
-		// atacante.getEquipo1().getAtaqueEspecial());
-
-		// turno.mensajeAtacante(atacante, ataque);
-
-		// float defensa = defensor.getEquipo1().getDefensaFisica() * (1 +
-		// defensor.getEquipo1().getDefensaEspecial());
-		// float vida = defensor.getEquipo1().getPuntosSalud() * (1 +
-		// defensor.getEquipo1().getNivel());
-		// turno.mensajeDefensor(defensor, vida);
-		// vida = vida - (ataque - defensa) * logicaTipos(atacante.getEquipo1(),
-		// defensor.getEquipo1());
-		// turno.mensajeDefensor(defensor, vida);
-
-		// if (vida <= 0) {
-		// turno.mostrarGanador(atacante);
-		// }
-
+	
 	}
 
 	public String mensajeAtacante(Pokemon pokeAtacante, Movimiento movimiento) {

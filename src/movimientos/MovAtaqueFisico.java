@@ -10,4 +10,17 @@ public class MovAtaqueFisico extends MovimientoAtaque {
 
     }
 
+
+    @Override
+    public float calcularAtaque(Pokemon atacante) {
+
+        return (float)atacante.getAtaqueFisico();
+    }
+
+    @Override
+    public float calcularDefensa(Pokemon defensor) {
+
+        return (float)defensor.getDefensaFisica();
+    }
+
 }

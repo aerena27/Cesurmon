@@ -33,6 +33,9 @@ public class Main {
         // eldenRingIntro.escribirCombate();
         // gamer1.capturar();
 
+        mv_01.usarMovimiento(p1, p2);
+        System.out.println(p2.getPuntosSaludCombate());
+
         
 
     }
