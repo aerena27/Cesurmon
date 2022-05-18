@@ -9,7 +9,7 @@ public class MovEstadoPeriodico extends MovimientoEstado {
     // Quemado, electrocargado
 
     public MovEstadoPeriodico(Tipo tipo, String nombreHabilidad, int resistencia, Estado estado) {
-        super(null, nombreHabilidad, resistencia, estado);
+        super(tipo, nombreHabilidad, resistencia, estado);
     }
 
     @Override

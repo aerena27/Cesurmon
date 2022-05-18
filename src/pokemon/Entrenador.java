@@ -14,6 +14,8 @@ public class Entrenador {
 	private int dinero;
 	private List<Pokemon> equipo1;
 	private List<Pokemon> equipo2;
+	private int numPokemonsEquipo1;
+	private int numPokemonsEquipo2;
 	private List<Pokemon> cajaPokemon;
 
 	public Entrenador(String nombre, int dinero, Pokemon poke1, Pokemon poke2, Pokemon poke3, Pokemon poke4) {
@@ -27,19 +29,6 @@ public class Entrenador {
 		equipo1.add(poke2);
 		equipo1.add(poke3);
 		equipo1.add(poke4);
-
-		if (poke1 != null) {
-			cajaPokemon.add(poke1);
-		}
-		if (poke2 != null) {
-			cajaPokemon.add(poke2);
-		}
-		if (poke3 != null) {
-			cajaPokemon.add(poke3);
-		}
-		if (poke4 != null) {
-			cajaPokemon.add(poke4);
-		}
 
 	}
 
