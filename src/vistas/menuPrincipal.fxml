@@ -44,14 +44,14 @@
       <children>
             <ImageView fitHeight="400.0" fitWidth="751.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@fondoMenuPrincipal.JPG" />
+                  <Image url="@Assets/fondoMenuPrincipal.JPG" />
                </image>
             </ImageView>
-            <Button fx:id="btnCombatir" layoutX="108.0" layoutY="167.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="117.0" text="Combatir" />
+            <Button fx:id="btnCombatir" layoutX="108.0" layoutY="167.0" mnemonicParsing="false" onAction="#entrarMenuCombate" prefHeight="43.0" prefWidth="117.0" text="Combatir" />
             <Button fx:id="btnHolaMundo" layoutX="317.0" layoutY="304.0" mnemonicParsing="false" onAction="#sayHelloWorld" prefHeight="43.0" prefWidth="117.0" text="Hola mundo" />
             <ImageView fitHeight="105.0" fitWidth="653.0" layoutX="47.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@logoPrincipal.png" />
+                  <Image url="@Assets/logoPrincipal.png" />
                </image>
             </ImageView>
             <Button fx:id="btnCapturar" layoutX="258.0" layoutY="167.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="117.0" text="Capturar" />
