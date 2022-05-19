@@ -82,8 +82,15 @@ public class CesurmonController implements Initializable {
     private void intentarCapturar() { // btnLanzarBall
         Boolean capturaCompletada = usuario.intentarCapturar();
         turnosCaptura++;
-
+        if (capturaCompletada == false) {
+            if (turnosCaptura >= 3) {
+                textoCapturaLog.setText("Se ha escapado...");
+            } else {
+                textoCapturaLog.setText("Has fallado...");
+            }
+        }
         if (capturaCompletada == true) {
+            textoCapturaLog.setText("¡Pokémon atrapado!");
             usuario.meterCaja(pokemonSalvaje);
             aleatorizarSalvaje();
         } else if (turnosCaptura >= 3) {

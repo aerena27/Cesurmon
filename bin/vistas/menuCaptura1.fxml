@@ -69,9 +69,19 @@
                </image>
             </ImageView>
             <TextField fx:id="textoCapturaLog" layoutX="85.0" layoutY="270.0" prefHeight="34.0" prefWidth="235.0" />
+            <ImageView fitHeight="60.0" fitWidth="142.0" layoutX="250.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Assets/txtAleatorizar.png" />
+               </image>
+            </ImageView>
             <ImageView fitHeight="123.0" fitWidth="246.0" layoutX="412.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Assets/baseRival.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="154.0" fitWidth="170.0" layoutX="454.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Assets/FrontSprites/143.gif" />
                </image>
             </ImageView>
             <ImageView fitHeight="45.0" fitWidth="132.0" layoutX="45.0" layoutY="331.0" pickOnBounds="true" preserveRatio="true">
