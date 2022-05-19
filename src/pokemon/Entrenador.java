@@ -27,20 +27,6 @@ public class Entrenador {
 		equipo1.add(poke2);
 		equipo1.add(poke3);
 		equipo1.add(poke4);
-
-		if (poke1 != null) {
-			cajaPokemon.add(poke1);
-		}
-		if (poke2 != null) {
-			cajaPokemon.add(poke2);
-		}
-		if (poke3 != null) {
-			cajaPokemon.add(poke3);
-		}
-		if (poke4 != null) {
-			cajaPokemon.add(poke4);
-		}
-
 	}
 
 	public String getNombre() {

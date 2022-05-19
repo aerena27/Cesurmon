@@ -9,16 +9,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class TestController implements Initializable {
+public class MenuPrincipalController implements Initializable {
 
     @FXML
-    private Button btnHolaMundo;
+    private Button btnHolaMundo; // %sayHelloWorld
 
     @FXML
     private TextField txtfield;
 
     @FXML
-    private void sayHelloWorld(ActionEvent event) {
+    private void sayHelloWorld(ActionEvent event) { // @btnHolaMundo
         System.out.println("Hola mundo");
     }
 
