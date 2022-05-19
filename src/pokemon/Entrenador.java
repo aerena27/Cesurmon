@@ -65,15 +65,7 @@ public class Entrenador {
 	public Pokemon generarPokemon() {
 		Random rando = new Random();
 		int id = rando.nextInt(10) + 1;
-		int ps = rando.nextInt(99) + 1;
-		int atFi = rando.nextInt(99) + 1;
-		int deFi = rando.nextInt(99) + 1;
-		int atEs = rando.nextInt(99) + 1;
-		int deEs = rando.nextInt(99) + 1;
-		int vel = rando.nextInt(99) + 1;
-		int nivel = rando.nextInt(10) + 1;
-		Pokemon pokemon = new Pokemon(id, "test", ps, atFi, deFi, atEs, deEs, vel, nivel, 0, Estado.SIN_ESTADO,
-				Tipo.CRYO, null, null, null, null);
+		Pokemon pokemon = new Pokemon(id, "test", Tipo.NORMAL, null, null, null, null);
 		return pokemon;
 	}
 

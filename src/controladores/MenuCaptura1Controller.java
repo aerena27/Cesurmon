@@ -10,9 +10,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class MenuCombateController implements Initializable {
+public class MenuCaptura1Controller implements Initializable {
 
     @FXML
     private Button btnHuir; // volverMenuPrincipal
@@ -25,7 +26,26 @@ public class MenuCombateController implements Initializable {
     }
 
     @FXML
-    private void entrarMenuMovimientos(ActionEvent event) {
+    private Button btnLanzarBall; // intentarCapturar
+
+    @FXML
+    private void intentarCapturar() { // btnLanzarBall
+
+    }
+
+    @FXML
+    TextField dialogoTexto;
+
+    @FXML
+    private void mostrarMensaje() {
+
+    }
+
+    @FXML
+    TextField textoNombreRival;
+
+    @FXML
+    private void mostrarNombreRival() {
 
     }
 

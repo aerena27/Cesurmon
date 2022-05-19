@@ -19,10 +19,8 @@ public class Main {
 
         MovAtaqueFisico mv_01 = new MovAtaqueFisico(Tipo.PYRO, "Placaje", 1, 50);
 
-        Pokemon p1 = new Pokemon(01, "Malenia", 1000, 80, 20, 40, 10, 30, 10, 0, Estado.SIN_ESTADO, Tipo.HYDRO, mv_01,
-                mv_01, null, null);
-        Pokemon p2 = new Pokemon(02, "Radhan", 1000, 50, 30, 80, 40, 10, 10, 0, Estado.SIN_ESTADO, Tipo.PYRO, mv_01,
-                null, null, null);
+        Pokemon p1 = new Pokemon(01, "Pikachu", Tipo.ELECTRO, mv_01, null, null, null);
+        Pokemon p2 = new Pokemon(01, "Squirtle", Tipo.HYDRO, mv_01, null, null, null);
 
         Entrenador gamer1 = new Entrenador("Poseidon", 9999, p1, p1, p1, p2);
         Entrenador gamer2 = new Entrenador("Joker", 0, p2, p2, p2, p2);
@@ -31,9 +29,7 @@ public class Main {
 
         // eldenRingIntro.combatir(gamer1, gamer2);
         // eldenRingIntro.escribirCombate();
-        //gamer1.capturar();
-
-        
+        // gamer1.capturar();
 
     }
 

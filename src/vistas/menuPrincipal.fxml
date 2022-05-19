@@ -42,7 +42,7 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="422.0" prefWidth="700.0" VBox.vgrow="ALWAYS">
       <children>
-            <ImageView fitHeight="400.0" fitWidth="751.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="400.0" fitWidth="747.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Assets/fondoMenuPrincipal.JPG" />
                </image>
@@ -54,7 +54,7 @@
                   <Image url="@Assets/logoPrincipal.png" />
                </image>
             </ImageView>
-            <Button fx:id="btnCapturar" layoutX="258.0" layoutY="167.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="117.0" text="Capturar" />
+            <Button fx:id="btnCapturar" layoutX="258.0" layoutY="167.0" mnemonicParsing="false" onAction="#entrarMenuCaptura" prefHeight="43.0" prefWidth="117.0" text="Capturar" />
             <Button fx:id="btnEntrenar" layoutX="411.0" layoutY="167.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="117.0" text="Entrenar" />
             <Button fx:id="btnCriar" layoutX="563.0" layoutY="167.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="117.0" text="Criar" />
             <Button fx:id="btnUsarCaja" layoutX="108.0" layoutY="237.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="117.0" text="Usar la caja" />
