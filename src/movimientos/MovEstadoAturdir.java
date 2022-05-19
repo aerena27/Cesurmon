@@ -1,6 +1,7 @@
 package movimientos;
 
 import combate.Estado;
+import combate.Tipo;
 import pokemon.Pokemon;
 
 public class MovEstadoAturdir extends MovimientoEstado {
@@ -8,8 +9,8 @@ public class MovEstadoAturdir extends MovimientoEstado {
     // Dormir, petrificar, congelar
     private int turnosParado; // bajan en cada turno
 
-    public MovEstadoAturdir(String nombreHabilidad, int resistencia, Estado estado, int turnosParado) {
-        super(nombreHabilidad, resistencia, estado);
+    public MovEstadoAturdir(Tipo tipo, String nombreHabilidad, int resistencia, Estado estado, int turnosParado) {
+        super(tipo, nombreHabilidad, resistencia, estado);
         this.turnosParado = turnosParado;
 
     }

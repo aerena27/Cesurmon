@@ -1,14 +1,15 @@
 package movimientos;
 
 import combate.Estado;
+import combate.Tipo;
 import pokemon.Pokemon;
 
 public class MovEstadoPeriodico extends MovimientoEstado {
 
     // Quemado, electrocargado
 
-    public MovEstadoPeriodico(String nombreHabilidad, int resistencia, Estado estado) {
-        super(nombreHabilidad, resistencia, estado);
+    public MovEstadoPeriodico(Tipo tipo, String nombreHabilidad, int resistencia, Estado estado) {
+        super(null, nombreHabilidad, resistencia, estado);
     }
 
     @Override
