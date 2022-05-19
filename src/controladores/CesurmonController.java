@@ -3,6 +3,7 @@ package controladores;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import combate.Combate;
 import combate.Tipo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import movimientos.MovAtaqueFisico;
+import movimientos.Movimiento;
 import movimientos.MovimientoAtaque;
 import pokemon.Entrenador;
 import pokemon.Pokemon;
@@ -97,6 +99,7 @@ public class CesurmonController implements Initializable {
         textoIntentosTotal.setText("Intentos: " + totalIntentos);
         turnosCaptura++;
         if (capturaCompletada == false) {
+            textoCapturasTotal.setText("Capturas: " + totalCapturas);
             if (turnosCaptura >= 3) {
                 textoCapturaLog.setText("Se ha escapado...");
             } else {
@@ -121,8 +124,9 @@ public class CesurmonController implements Initializable {
         turnosCaptura = 0;
         pokemonSalvaje = usuario.generarPokemon();
         // TODO: Poner el texto con el nombre de la especie
-        textoNombreSalvaje.setText("ID Pokemon: " + pokemonSalvaje.getIdEspecie());
+        textoNombreSalvaje.setText("N. Pokedex: " + pokemonSalvaje.getIdEspecie());
         textoCapturasTotal.setText("Capturas: " + totalCapturas);
+        textoIntentosTotal.setText("Intentos: " + totalIntentos);
     }
 
     @FXML
@@ -141,6 +145,9 @@ public class CesurmonController implements Initializable {
 
     Pokemon pokeUsuario;
     Pokemon pokeRival;
+    Movimiento moviUsuario;
+    Movimiento moviRival;
+    Combate combate;
 
     @FXML
     private TextField txtPokemonUsuario;
@@ -161,6 +168,12 @@ public class CesurmonController implements Initializable {
     private TextField txtAccionRival;
 
     @FXML
+    private TextField txtResistenciaUsuario;
+
+    @FXML
+    private TextField txtResistenciaRival;
+
+    @FXML
     private Button btnHuirCombate; // combateVolverMenuPrincipal
 
     @FXML
@@ -177,15 +190,23 @@ public class CesurmonController implements Initializable {
     private Button btnIniciarCombate;
 
     @FXML
-    private void iniciarCombate() {
-        pokeUsuario = usuario.sacarPokemon();
-        pokeRival = cpu.sacarPokemon();
-        txtPokemonUsuario.setText("ID nuestro: " + pokeUsuario.getIdEspecie());
-        txtPokemonRival.setText("ID rival: " + pokeRival.getIdEspecie());
+    private void setTextos() {
+        txtPokemonUsuario.setText("N. Pokedex nuestro: " + pokeUsuario.getIdEspecie());
+        txtPokemonRival.setText("N. Pokedex rival: " + pokeRival.getIdEspecie());
         txtVidaUsuario.setText("PS: " + pokeUsuario.getPuntosSalud() + "/"
                 + pokeUsuario.getPuntosSaludCombate());
         txtVidaRival.setText("PS: " + pokeRival.getPuntosSalud() + "/"
                 + pokeRival.getPuntosSaludCombate());
+        txtResistenciaUsuario.setText("Estam.: " + pokeUsuario.getResistencia());
+        txtResistenciaRival.setText("Estam.: " + pokeRival.getResistencia());
+    }
+
+    @FXML
+    private void iniciarCombate() {
+        pokeUsuario = usuario.sacarPokemon();
+        pokeRival = cpu.sacarPokemon();
+        setTextos();
+        combate = new Combate(usuario, cpu);
     }
 
     @FXML
@@ -193,7 +214,9 @@ public class CesurmonController implements Initializable {
 
     @FXML
     private void usarMovimiento1(ActionEvent event) { // btnMovimiento1
-
+        moviUsuario = pokeUsuario.getMovimiento(0);
+        moviUsuario.usarMovimiento(pokeUsuario, pokeRival);
+        setTextos();
     }
 
     @FXML
@@ -217,6 +240,14 @@ public class CesurmonController implements Initializable {
 
     @FXML
     private void usarMovimiento4(ActionEvent event) { // btnMovimiento1
+
+    }
+
+    @FXML
+    private Button btnDescansar;
+
+    @FXML
+    private void descansar() {
 
     }
 

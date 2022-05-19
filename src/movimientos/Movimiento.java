@@ -35,6 +35,14 @@ public abstract class Movimiento {
         this.resistencia = resistencia;
     }
 
+    public Boolean checkResistencia(Pokemon atacante) {
+        if (atacante.getResistencia() >= getResistencia()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public void consumirResistencia(Pokemon atacante) {
         atacante.setResistencia(atacante.getResistencia() - getResistencia());
     }
@@ -47,6 +55,14 @@ public abstract class Movimiento {
             return Efectividad.VENTAJA;
         } else {
             return Efectividad.DESVENTAJA;
+        }
+    }
+
+    public void corregirVitalidadNegativa(int vitalidadFinal, Pokemon defensor) {
+        if (vitalidadFinal < 0) {
+            defensor.setPuntosSalud(0);
+        } else {
+            defensor.setPuntosSaludCombate(0);
         }
     }
 

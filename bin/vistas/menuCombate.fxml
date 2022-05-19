@@ -43,7 +43,7 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="422.0" prefWidth="700.0" VBox.vgrow="ALWAYS">
       <children>
-            <ImageView fitHeight="400.0" fitWidth="751.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="416.0" fitWidth="711.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Assets/battleBg1.png" />
                </image>
@@ -86,9 +86,9 @@
                </image>
             </ImageView>
             <TextField fx:id="txtPokemonUsuario" editable="false" layoutX="42.0" layoutY="18.0" prefHeight="22.0" prefWidth="142.0" />
-            <TextField fx:id="txtVidaRival" editable="false" layoutX="565.0" layoutY="46.0" prefHeight="26.0" prefWidth="80.0" />
-            <TextField fx:id="txtVidaUsuario" editable="false" layoutX="73.0" layoutY="46.0" prefHeight="26.0" prefWidth="80.0" />
-            <Button fx:id="btnIniciarCombate" layoutX="306.0" layoutY="285.0" mnemonicParsing="false" onAction="#iniciarCombate" prefHeight="34.0" prefWidth="102.0" text="Iniciar combate" />
+            <TextField fx:id="txtVidaRival" editable="false" layoutX="511.0" layoutY="46.0" prefHeight="26.0" prefWidth="80.0" />
+            <TextField fx:id="txtVidaUsuario" editable="false" layoutX="121.0" layoutY="46.0" prefHeight="26.0" prefWidth="80.0" />
+            <Button fx:id="btnIniciarCombate" layoutX="315.0" layoutY="203.0" mnemonicParsing="false" onAction="#iniciarCombate" prefHeight="34.0" prefWidth="102.0" text="Iniciar combate" />
             <ImageView fitHeight="123.0" fitWidth="246.0" layoutX="100.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Assets/FrontSprites/009_flip.gif" />
@@ -105,6 +105,9 @@
                </image>
             </ImageView>
             <TextField fx:id="txtAccionUsuario" editable="false" layoutX="443.0" layoutY="293.0" prefHeight="34.0" prefWidth="235.0" />
+            <TextField fx:id="txtResistenciaUsuario" editable="false" layoutX="23.0" layoutY="46.0" prefHeight="26.0" prefWidth="80.0" />
+            <TextField fx:id="txtResistenciaRival" editable="false" layoutX="605.0" layoutY="46.0" prefHeight="26.0" prefWidth="80.0" />
+            <Button fx:id="btnDescansar" layoutX="310.0" layoutY="285.0" mnemonicParsing="false" onAction="#descansar" prefHeight="34.0" prefWidth="102.0" text="Descansar" />
       </children>
     </AnchorPane>
   </children>

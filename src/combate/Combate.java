@@ -23,14 +23,14 @@ public class Combate {
 	private int koRival;
 	public static final String PATH_LOG = "./log/combate.log";
 
-	public Combate(Entrenador jugador, Entrenador rival, int koJugador, int koRival) {
+	public Combate(Entrenador jugador, Entrenador rival) {
 		super();
 		numeroTurno = 0;
 		turnos = new LinkedList<>();
 		this.jugador = jugador;
 		this.rival = rival;
-		this.koJugador = koJugador;
-		this.koRival = koRival;
+		this.koJugador = 0;
+		this.koRival = 0;
 	}
 
 	// Método donde se realice todo el combate en su totalidad en bucle
@@ -40,7 +40,7 @@ public class Combate {
 	}
 
 	// Método donde se realizará la acción de todo el turno
-	public void combatir(Entrenador atacante, Entrenador defensor) {
+	public void realizarTurno(Entrenador atacante, Entrenador defensor) {
 
 		// TODO: Comprobar qué velocidad es mayor para quién empieza antes
 		// TODO: Toda la acción de usar movimientos
@@ -54,36 +54,8 @@ public class Combate {
 		System.out.println("Introduce el movimiento que quieres que " + pokeAtacante
 				+ " use (1, 2, 3, 4)");
 		movimientoAtacante = pokeAtacante.getMovimiento(sc.nextInt() - 1);
-		sc.close();
-
-		System.out.println(mensajeAtacante(pokeAtacante, movimientoAtacante));
-		// float ataque = 0;
-
-		// if (((MovimientoAtaque)
-		// atacante.getEquipo1().getMovimientos(movimientoAtacante)).getEsFisico())
-		// ataque = (atacante.getEquipo1().getAtaqueFisico()) * (1 +
-		// atacante.getEquipo1().getAtaqueEspecial());
-		// else
-		// ataque = (atacante.getEquipo1().getAtaqueFisico()) * (1 + potencia +
-		// atacante.getEquipo1().getAtaqueEspecial());
-
-		// ataque = atacante.getEquipo1().getAtaqueFisico() * (1 +
-		// atacante.getEquipo1().getAtaqueEspecial());
-
-		// turno.mensajeAtacante(atacante, ataque);
-
-		// float defensa = defensor.getEquipo1().getDefensaFisica() * (1 +
-		// defensor.getEquipo1().getDefensaEspecial());
-		// float vida = defensor.getEquipo1().getPuntosSalud() * (1 +
-		// defensor.getEquipo1().getNivel());
-		// turno.mensajeDefensor(defensor, vida);
-		// vida = vida - (ataque - defensa) * logicaTipos(atacante.getEquipo1(),
-		// defensor.getEquipo1());
-		// turno.mensajeDefensor(defensor, vida);
-
-		// if (vida <= 0) {
-		// turno.mostrarGanador(atacante);
-		// }
+		
+		
 
 	}
 
