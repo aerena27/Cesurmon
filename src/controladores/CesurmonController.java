@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import pokemon.Entrenador;
@@ -58,12 +59,17 @@ public class CesurmonController implements Initializable {
 
     private Pokemon pokemonSalvaje;
     private int turnosCaptura = 0;
+    private int totalCapturas = 0;
+    private int totalIntentos = 0;
 
     @FXML
     private TextField textoNombreSalvaje;
 
     @FXML
     private TextField textoCapturaLog;
+
+    @FXML
+    private TextField textoCapturasTotal;
 
     @FXML
     private Button btnHuirCaptura; // volverMenuPrincipal
@@ -81,6 +87,7 @@ public class CesurmonController implements Initializable {
     @FXML
     private void intentarCapturar() { // btnLanzarBall
         Boolean capturaCompletada = usuario.intentarCapturar();
+        totalIntentos++;
         turnosCaptura++;
         if (capturaCompletada == false) {
             if (turnosCaptura >= 3) {
@@ -92,6 +99,7 @@ public class CesurmonController implements Initializable {
         if (capturaCompletada == true) {
             textoCapturaLog.setText("¡Pokémon atrapado!");
             usuario.meterCaja(pokemonSalvaje);
+            totalCapturas++;
             aleatorizarSalvaje();
         } else if (turnosCaptura >= 3) {
             aleatorizarSalvaje();
@@ -106,7 +114,8 @@ public class CesurmonController implements Initializable {
         turnosCaptura = 0;
         pokemonSalvaje = usuario.generarPokemon();
         // TODO: Poner el texto con el nombre de la especie
-        textoNombreSalvaje.setText("ID Pokemon: " + String.valueOf(pokemonSalvaje.getIdEspecie()));
+        textoNombreSalvaje.setText("ID Pokemon: " + pokemonSalvaje.getIdEspecie());
+        textoCapturasTotal.setText("Capturas: " + totalCapturas + " Intentos: " + totalIntentos);
     }
 
     @FXML
