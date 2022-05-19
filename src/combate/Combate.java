@@ -19,6 +19,7 @@ public class Combate {
 	private int numeroTurno;
 	private Entrenador jugador;
 	private Entrenador rival;
+	private Entrenador ganador;
 	private int koJugador;
 	private int koRival;
 	public static final String PATH_LOG = "./log/combate.log";
@@ -31,36 +32,73 @@ public class Combate {
 		this.rival = rival;
 		this.koJugador = 0;
 		this.koRival = 0;
-	}
-
-	// Método donde se realice todo el combate en su totalidad en bucle
-	public void iniciarCombate() {
-
-		// Grabar los logs acá
+		this.ganador = null;
 	}
 
 	// Método donde se realizará la acción de todo el turno
-	public void realizarTurno(Entrenador atacante, Entrenador defensor) {
+	public void realizarTurno(Entrenador usuario, Entrenador rival, Movimiento moviUsuario,
+			Movimiento moviRival) {
 
-		// TODO: Comprobar qué velocidad es mayor para quién empieza antes
-		// TODO: Toda la acción de usar movimientos
+		Pokemon pokeUsuario = usuario.sacarPokemon();
+		Pokemon pokeRival = rival.sacarPokemon();
+		Movimiento movimientoUsuario = moviUsuario;
+		Movimiento movimientoRival = moviRival;
 
-		Pokemon pokeAtacante = atacante.sacarPokemon();
-		Pokemon pokeDefensor = defensor.sacarPokemon();
-		Movimiento movimientoAtacante;
-		Movimiento movimientoDefensor;
+		setNumeroTurno(this.numeroTurno++);
+		String accionUsuario = pokeUsuario.getNombreEspecie() + " ha usado "
+				+ moviUsuario.getNombreHabilidad();
+		String acccionRival = pokeRival.getNombreEspecie() + " ha usado "
+				+ movimientoRival.getNombreHabilidad();
+		Turno turno = new Turno(getNumeroTurno(), accionUsuario, acccionRival);
 
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Introduce el movimiento que quieres que " + pokeAtacante
-				+ " use (1, 2, 3, 4)");
-		movimientoAtacante = pokeAtacante.getMovimiento(sc.nextInt() - 1);
-		
-		
+		if (pokeUsuario.getVelocidad() >= pokeRival.getVelocidad()) {
+			movimientoUsuario.usarMovimiento(pokeUsuario, pokeRival);
+			moviRival.usarMovimiento(pokeRival, pokeUsuario);
+		} else {
+			moviRival.usarMovimiento(pokeRival, pokeUsuario);
+			movimientoUsuario.usarMovimiento(pokeUsuario, pokeRival);
+		}
+		turnos.add(turno);
+		checkKO(pokeUsuario, pokeRival);
 
 	}
 
-	public String mensajeAtacante(Pokemon pokeAtacante, Movimiento movimiento) {
+	public void checkKO(Pokemon pokeUsuario, Pokemon pokeRival) {
+		if (pokeUsuario.getPuntosSaludCombate() == 0) {
+			setKoJugador(this.koJugador++);
+		}
+		if (pokeRival.getPuntosSaludCombate() == 0) {
+			setKoRival(this.koRival++);
+		}
+		if (this.koJugador == 4 && this.koRival < 4) {
+			setGanador(rival);
+			refrescarCombate();
+		} else if (this.koJugador < 4 && this.koRival == 4) {
+			setGanador(jugador);
+			refrescarCombate();
+		} else {
+			setGanador(jugador);
+			refrescarCombate();
+		}
+	}
+
+	public String devolverGanador() {
+		if (this.ganador != null) {
+			return "¡Ha ganado " + ganador.getNombre() + "!";
+		} else {
+			return "";
+		}
+	}
+
+	public String mensajeAtaque(Pokemon pokeAtacante, Movimiento movimiento) {
 		return "¡" + pokeAtacante.getNombreEspecie() + " ha usado " + movimiento.getNombreHabilidad() + "!";
+	}
+
+	public void refrescarCombate() {
+		setKoJugador(0);
+		setKoRival(0);
+		escribirCombate();
+		// TODO: Restaurar estadísticas de ambos equipos
 	}
 
 	public int getNumeroTurno() {
@@ -101,6 +139,14 @@ public class Combate {
 
 	public void setKoRival(int koRival) {
 		this.koRival = koRival;
+	}
+
+	public Entrenador getGanador() {
+		return ganador;
+	}
+
+	public void setGanador(Entrenador ganador) {
+		this.ganador = ganador;
 	}
 
 	public List<Turno> getTurnos() {

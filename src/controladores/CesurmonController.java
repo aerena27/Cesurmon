@@ -1,6 +1,7 @@
 package controladores;
 
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 import combate.Combate;
@@ -210,13 +211,35 @@ public class CesurmonController implements Initializable {
     }
 
     @FXML
-    private Button btnMovimiento1; // usarMovimiento1
+    private void continuarCombate() {
+        if (pokeUsuario.getPuntosSaludCombate() <= 0) {
+            pokeUsuario = usuario.sacarPokemon();
+        }
+        if (pokeRival.getPuntosSaludCombate() <= 0) {
+            pokeRival = cpu.sacarPokemon();
+        }
+        setTextos();
+    }
 
     @FXML
-    private void usarMovimiento1(ActionEvent event) { // btnMovimiento1
+    private void escogerMovimientoRival() {
+        Random random = new Random();
+        int eleccion = random.nextInt(3);
+        moviRival = pokeRival.getMovimiento(eleccion);
+    }
+
+    @FXML
+    private Button btnMovimiento1;
+
+    @FXML
+    private void usarMovimiento1(ActionEvent event) {
+        // TODO: Arreglar sacar pokemon
         moviUsuario = pokeUsuario.getMovimiento(0);
-        moviUsuario.usarMovimiento(pokeUsuario, pokeRival);
-        setTextos();
+        escogerMovimientoRival();
+        combate.realizarTurno(usuario, cpu, moviUsuario, moviRival);
+        continuarCombate();
+        // moviUsuario.usarMovimiento(pokeUsuario, pokeRival);
+        // setTextos();
     }
 
     @FXML
@@ -256,10 +279,22 @@ public class CesurmonController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         MovAtaqueFisico placaje = new MovAtaqueFisico(Tipo.NORMAL, "Placaje", 1, 50);
         Pokemon poke1 = new Pokemon(1, "Pikachu1", Tipo.ELECTRO, placaje, null, null, null);
-        Pokemon poke2 = new Pokemon(2, "Pikachu2", Tipo.ELECTRO, placaje, null, null, null);
+        Pokemon poke2 = new Pokemon(2, "Pikachu1", Tipo.ELECTRO, placaje, null, null, null);
+        Pokemon poke3 = new Pokemon(3, "Pikachu1", Tipo.ELECTRO, placaje, null, null, null);
+        Pokemon poke4 = new Pokemon(4, "Pikachu1", Tipo.ELECTRO, placaje, null, null, null);
+
+        Pokemon poke5 = new Pokemon(5, "Pikachu2", Tipo.ELECTRO, placaje, placaje, placaje, placaje);
+        Pokemon poke6 = new Pokemon(6, "Pikachu2", Tipo.ELECTRO, placaje, placaje, placaje, placaje);
+        Pokemon poke7 = new Pokemon(7, "Pikachu2", Tipo.ELECTRO, placaje, placaje, placaje, placaje);
+        Pokemon poke8 = new Pokemon(8, "Pikachu2", Tipo.ELECTRO, placaje, placaje, placaje, placaje);
+
         poke1.setMaxStats();
-        usuario = new Entrenador("Pepe", 9999, poke1, poke1, poke1, poke1);
-        cpu = new Entrenador("Luis", 9999, poke2, null, null, null);
+        poke2.setMaxStats();
+        poke3.setMaxStats();
+        poke4.setMaxStats();
+
+        usuario = new Entrenador("Pepe", 9999, poke1, poke2, poke3, poke4);
+        cpu = new Entrenador("Luis", 9999, poke5, poke6, poke7, poke8);
     }
 
 }

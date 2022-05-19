@@ -59,10 +59,18 @@ public abstract class Movimiento {
     }
 
     public void corregirVitalidadNegativa(int vitalidadFinal, Pokemon defensor) {
-        if (vitalidadFinal < 0) {
-            defensor.setPuntosSalud(0);
-        } else {
+        if (vitalidadFinal <= 0) {
             defensor.setPuntosSaludCombate(0);
+        } else {
+            defensor.setPuntosSaludCombate(vitalidadFinal);
+        }
+    }
+
+    public Boolean puedeAtacar(Pokemon atacante) {
+        if (atacante.getPuntosSaludCombate() <= 0) {
+            return false;
+        } else {
+            return true;
         }
     }
 

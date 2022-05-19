@@ -239,8 +239,8 @@ public class Pokemon {
 	}
 
 	public void setMaxStats() {
-		setPuntosSaludCombate(999);
-		setPuntosSalud(999);
+		setPuntosSaludCombate(99999);
+		setPuntosSalud(99999);
 		setAtaqueFisico(999);
 		setDefensaFisica(999);
 		setAtaqueEspecial(999);

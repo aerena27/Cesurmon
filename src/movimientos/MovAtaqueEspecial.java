@@ -12,13 +12,18 @@ public class MovAtaqueEspecial extends MovimientoAtaque {
 
     @Override
     public void usarMovimiento(Pokemon atacante, Pokemon defensor) {
-        float potenciadorTipoPropio = calcularStab(atacante);
-        float potenciadorTipoRival = logicaTipos(defensor);
-        int danioTotal = (int) ((getPotencia() * atacante.getAtaqueEspecial() * potenciadorTipoPropio
-                * potenciadorTipoRival) - defensor.getDefensaEspecial());
+        if (puedeAtacar(atacante) == true) {
+            if (checkResistencia(atacante) == true) {
+                consumirResistencia(atacante);
+                float potenciadorTipoPropio = calcularStab(atacante);
+                float potenciadorTipoRival = logicaTipos(defensor);
+                int danioTotal = (int) ((getPotencia() * atacante.getAtaqueEspecial() * potenciadorTipoPropio
+                        * potenciadorTipoRival) - defensor.getDefensaEspecial());
 
-        int vidaDefensor = defensor.getPuntosSaludCombate() - danioTotal;
-        corregirVitalidadNegativa(vidaDefensor, defensor);
+                int vidaDefensor = defensor.getPuntosSaludCombate() - danioTotal;
+                corregirVitalidadNegativa(vidaDefensor, defensor);
+            }
+        }
     }
 
 }

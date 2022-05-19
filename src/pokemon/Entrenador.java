@@ -58,9 +58,11 @@ public class Entrenador {
 	}
 
 	public Pokemon sacarPokemon() {
+		Pokemon pokemon;
 		for (int i = 0; i < getEquipo1().size(); i++) {
 			if (getEquipo1().get(i).getPuntosSaludCombate() > 0) {
-				return getEquipo1().get(i);
+				pokemon = getEquipo1().get(i);
+				return pokemon;
 			}
 		}
 		return null;
