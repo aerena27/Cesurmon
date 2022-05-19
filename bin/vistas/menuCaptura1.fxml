@@ -53,7 +53,7 @@
                   <Image url="@Assets/battleOptionButton.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="65.0" fitWidth="177.0" layoutX="228.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="65.0" fitWidth="177.0" layoutX="452.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Assets/battleOptionButton.png" />
                </image>
@@ -63,7 +63,12 @@
                   <Image url="@Assets/textBox1.png" />
                </image>
             </ImageView>
-            <TextField fx:id="dialogoTexto" layoutX="85.0" layoutY="270.0" onAction="#mostrarMensaje" prefHeight="34.0" prefWidth="235.0" />
+            <ImageView fitHeight="65.0" fitWidth="177.0" layoutX="232.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Assets/battleOptionButton.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="textoCapturaLog" layoutX="85.0" layoutY="270.0" prefHeight="34.0" prefWidth="235.0" />
             <ImageView fitHeight="123.0" fitWidth="246.0" layoutX="412.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Assets/baseRival.png" />
@@ -74,7 +79,7 @@
                   <Image url="@Assets/txtLanzarBall.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="52.0" fitWidth="170.0" layoutX="238.0" layoutY="328.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="52.0" fitWidth="170.0" layoutX="463.0" layoutY="327.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Assets/txtHuir.png" />
                </image>
@@ -84,9 +89,10 @@
                   <Image url="@Assets/hpBarRivalCaptura.png" />
                </image>
             </ImageView>
-            <TextField fx:id="textoNombreRival" layoutX="484.0" layoutY="27.0" onAction="#mostrarNombreRival" prefHeight="22.0" prefWidth="142.0" />
-            <Button fx:id="btnHuirCaptura" layoutX="234.0" layoutY="323.0" mnemonicParsing="false" onAction="#capturaVolverMenuPrincipal" opacity="0.0" prefHeight="60.0" prefWidth="170.0" text="Huir" />
+            <TextField fx:id="textoNombreSalvaje" layoutX="484.0" layoutY="27.0" prefHeight="22.0" prefWidth="142.0" />
+            <Button fx:id="btnHuirCaptura" layoutX="455.0" layoutY="323.0" mnemonicParsing="false" onAction="#capturaVolverMenuPrincipal" opacity="0.0" prefHeight="60.0" prefWidth="170.0" text="Huir" />
             <Button fx:id="btnLanzarBall" layoutX="23.0" layoutY="323.0" mnemonicParsing="false" onAction="#intentarCapturar" opacity="0.0" prefHeight="60.0" prefWidth="170.0" text="Lanzar ball" />
+            <Button fx:id="btnAleatorizarSalvaje" layoutX="235.0" layoutY="323.0" mnemonicParsing="false" onAction="#aleatorizarSalvaje" opacity="0.0" prefHeight="60.0" prefWidth="170.0" text="Aleatorizar" />
       </children>
     </AnchorPane>
   </children>

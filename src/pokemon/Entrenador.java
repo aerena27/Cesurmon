@@ -62,6 +62,10 @@ public class Entrenador {
 		return null;
 	}
 
+	public void meterCaja(Pokemon pokemon) {
+		cajaPokemon.add(pokemon);
+	}
+
 	public Pokemon generarPokemon() {
 		Random rando = new Random();
 		int id = rando.nextInt(10) + 1;
@@ -69,56 +73,16 @@ public class Entrenador {
 		return pokemon;
 	}
 
-	public void capturar() {
+	public Boolean intentarCapturar() {
 		Random rando = new Random();
-		Scanner sc = new Scanner(System.in);
-		int eleccion = 1; // elección del menú
-		int eleccionCaptura; // elección de capturar o huir
-		int contadorTurnos = 0; // contador de turnos disponibles
-		int contadorTurnos2 = 0; // condición de preguntar si seguir capturando
-		int acierto; // probabilidad de captura
+		int acierto = rando.nextInt(2); // probabilidad de captura
 
-		while (eleccion == 1 || eleccion == 2) {
-
-			Pokemon objetivo = generarPokemon();
-
-			System.out.println("Pokemon: " + objetivo.getIdEspecie());
-
-			System.out.println("1 (capturar), 2 (aleatorizar), 3 (salir)");
-			eleccion = sc.nextInt();
-
-			switch (eleccion) {
-				case 1:
-					while (contadorTurnos < 3) {
-						contadorTurnos++;
-						contadorTurnos2++;
-						acierto = rando.nextInt(2);
-						if (acierto == 0) {
-							System.out.println("¡Captura completada!");
-							cajaPokemon.add(objetivo);
-							contadorTurnos = 3;
-							contadorTurnos2 = 3;
-						} else {
-							System.out.println("¡Ha fallado!");
-						}
-
-						if (contadorTurnos2 < 3) { // Condición de seguir preguntando
-							System.out.println("1 (seguir capturando), 2 (huir)");
-							eleccionCaptura = sc.nextInt();
-							if (eleccionCaptura == 2) {
-								contadorTurnos = 3;
-							}
-						}
-					}
-					contadorTurnos = 0;
-					contadorTurnos2 = 0;
-				case 2:
-					eleccion = 2;
-				case 3:
-					eleccion = 3;
-					sc.close();
-			}
+		if (acierto == 0) {
+			System.out.println(true);
+			return true;
 		}
+		System.out.println(false);
+		return false;
 	}
 
 	public Boolean checkDinero(int cantidadNecesaria) {
