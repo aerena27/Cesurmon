@@ -24,14 +24,14 @@ public class Main {
         Pokemon p2 = new Pokemon(02, "Radhan", 1000, 50, 30, 80, 40, 10, 10, 0, Estado.SIN_ESTADO, Tipo.PYRO, mv_01,
                 null, null, null);
 
-        Entrenador gamer1 = new Entrenador("Poseidon", 0, p1, p1, p1, p2);
+        Entrenador gamer1 = new Entrenador("Poseidon", 9999, p1, p1, p1, p2);
         Entrenador gamer2 = new Entrenador("Joker", 0, p2, p2, p2, p2);
 
         // Combate eldenRingIntro = new Combate(gamer1, gamer2, 0, 0);
 
         // eldenRingIntro.combatir(gamer1, gamer2);
         // eldenRingIntro.escribirCombate();
-        // gamer1.capturar();
+        //gamer1.capturar();
 
         
 
