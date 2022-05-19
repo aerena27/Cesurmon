@@ -225,4 +225,16 @@ public class Pokemon {
 	public void descansar() {
 		setResistencia(10);
 	}
+
+	public void setMaxStats() {
+		setPuntosSaludCombate(999);
+		setPuntosSalud(999);
+		setAtaqueFisico(999);
+		setDefensaFisica(999);
+		setAtaqueEspecial(999);
+		setDefensaEspecial(999);
+		setVelocidad(999);
+	}
+
+	
 }
