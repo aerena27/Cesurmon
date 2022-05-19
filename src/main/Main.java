@@ -30,7 +30,7 @@ public class Main {
         // eldenRingIntro.combatir(gamer1, gamer2);
         // eldenRingIntro.escribirCombate();
         // gamer1.capturar();
-
+        
     }
 
 }

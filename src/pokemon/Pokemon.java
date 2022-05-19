@@ -45,6 +45,7 @@ public class Pokemon {
 		this.idEspecie = idEspecie;
 		this.nombreEspecie = nombreEspecie;
 		this.puntosSalud = random.nextInt(99) + 1;
+		this.puntosSaludCombate = this.puntosSalud;
 		this.ataqueFisico = random.nextInt(99) + 1;
 		this.defensaFisica = random.nextInt(99) + 1;
 		this.ataqueEspecial = random.nextInt(99) + 1;

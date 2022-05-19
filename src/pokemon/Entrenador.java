@@ -45,6 +45,10 @@ public class Entrenador {
 		this.dinero = dinero;
 	}
 
+	public Pokemon getPokemon(int i) {
+		return equipo1.get(i);
+	}
+
 	public List<Pokemon> getEquipo1() {
 		return equipo1;
 	}

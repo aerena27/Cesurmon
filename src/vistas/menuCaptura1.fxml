@@ -68,7 +68,7 @@
                   <Image url="@Assets/battleOptionButton.png" />
                </image>
             </ImageView>
-            <TextField fx:id="textoCapturaLog" layoutX="85.0" layoutY="270.0" prefHeight="34.0" prefWidth="235.0" />
+            <TextField fx:id="textoCapturaLog" editable="false" layoutX="85.0" layoutY="270.0" prefHeight="34.0" prefWidth="235.0" />
             <ImageView fitHeight="60.0" fitWidth="142.0" layoutX="250.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Assets/txtAleatorizar.png" />
@@ -99,16 +99,22 @@
                   <Image url="@Assets/hpBarRivalCaptura.png" />
                </image>
             </ImageView>
-            <TextField fx:id="textoNombreSalvaje" layoutX="484.0" layoutY="27.0" prefHeight="22.0" prefWidth="142.0" />
+            <TextField fx:id="textoNombreSalvaje" editable="false" layoutX="484.0" layoutY="27.0" prefHeight="22.0" prefWidth="142.0" />
             <Button fx:id="btnHuirCaptura" layoutX="455.0" layoutY="323.0" mnemonicParsing="false" onAction="#capturaVolverMenuPrincipal" opacity="0.0" prefHeight="60.0" prefWidth="170.0" text="Huir" />
             <Button fx:id="btnLanzarBall" layoutX="23.0" layoutY="323.0" mnemonicParsing="false" onAction="#intentarCapturar" opacity="0.0" prefHeight="60.0" prefWidth="170.0" text="Lanzar ball" />
             <Button fx:id="btnAleatorizarSalvaje" layoutX="235.0" layoutY="323.0" mnemonicParsing="false" onAction="#aleatorizarSalvaje" opacity="0.0" prefHeight="60.0" prefWidth="170.0" text="Aleatorizar" />
+            <ImageView fitHeight="90.0" fitWidth="205.0" layoutX="75.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Assets/textBox2.png" />
+               </image>
+            </ImageView>
             <ImageView fitHeight="90.0" fitWidth="205.0" layoutX="75.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Assets/textBox2.png" />
                </image>
             </ImageView>
-            <TextField fx:id="textoCapturasTotal" layoutX="88.0" layoutY="33.0" prefHeight="26.0" prefWidth="177.0" />
+            <TextField fx:id="textoIntentosTotal" alignment="CENTER" editable="false" layoutX="88.0" layoutY="32.0" prefHeight="26.0" prefWidth="177.0" />
+            <TextField fx:id="textoCapturasTotal" alignment="CENTER" editable="false" layoutX="89.0" layoutY="89.0" prefHeight="26.0" prefWidth="177.0" />
       </children>
     </AnchorPane>
   </children>
