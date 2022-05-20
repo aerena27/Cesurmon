@@ -54,6 +54,16 @@ public abstract class Movimiento {
     public void usarMovimiento(Pokemon atacante, Pokemon defensor) {
 
     }
+    
+    public float calcularAtaque(Pokemon atacante) {
+        
+        return 0;
+    }
+
+    public float calcularDefensa(Pokemon defensor) {
+
+        return 0;
+    }
 
     public int convertirTipo(Tipo elemento) {
 
