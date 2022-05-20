@@ -13,14 +13,12 @@ public class Entrenador {
 	private String nombre;
 	private int dinero;
 	private List<Pokemon> equipo1;
-	private List<Pokemon> equipo2;
-	private int numPokemonsEquipo1;
-	private int numPokemonsEquipo2;
+//	private List<Pokemon> equipo2;
 	private List<Pokemon> cajaPokemon;
 
 	public Entrenador(String nombre, int dinero, Pokemon poke1, Pokemon poke2, Pokemon poke3, Pokemon poke4) {
 		equipo1 = new LinkedList<>();
-		equipo2 = new LinkedList<>();
+		//equipo2 = new LinkedList<>();
 		cajaPokemon = new LinkedList<>();
 		this.nombre = nombre;
 		this.dinero = dinero;

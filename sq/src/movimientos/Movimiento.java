@@ -53,6 +53,8 @@ public abstract class Movimiento {
 
     public void usarMovimiento(Pokemon atacante, Pokemon defensor) {
 
+    	calcularVida(atacante, defensor, calcularAtaque(atacante), calcularDefensa(defensor));
+    	
     }
     
     public float calcularAtaque(Pokemon atacante) {
@@ -63,6 +65,12 @@ public abstract class Movimiento {
     public float calcularDefensa(Pokemon defensor) {
 
         return 0;
+    }
+    
+    public void calcularVida(Pokemon atacante, Pokemon defensor, float ataque, float defensa) {
+
+        defensor.setPuntosSaludCombate((int)((float)defensor.getPuntosSaludCombate() - (ataque - defensa) * logicaTipos(defensor)));
+
     }
 
     public int convertirTipo(Tipo elemento) {
