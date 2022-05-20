@@ -1,15 +1,20 @@
 package aplicacion;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import combate.Estado;
 import combate.Tipo;
-import movimientos.MovAtaqueFisico;
+import movimientos.MovAtaqueEspecial;
+import movimientos.Movimiento;
+import pokemon.Entrenador;
 import pokemon.Pokemon;
 
 public class mysql_demo{
 
 
-	public Tipo tipoAEnum(int tip) {
+	public static Tipo tipoAEnum(int tip) {
 
 		switch(tip) {
 		case 0:
@@ -49,11 +54,14 @@ public class mysql_demo{
 		
 		// Las variables donde vamos a cargar los datos de mysql
 		
-		int idMovimiento, idEspecie, idEntrenador, tipo, dinero;
+		int idMovimiento, idEspecie, idEntrenador, tipo, parametroEspecifico, dinero, nMov=0, nPok=0;
 		String nombreHabilidad, nombreEspecie, nombreEntrenador;
 		
 		
-		
+		List<MovAtaqueEspecial> mov_esp = new ArrayList<>();
+		List<Pokemon> pokedex = new ArrayList<>();
+		List<Entrenador> jugadores = new ArrayList<>();
+		Random rn = new Random();
 		
 		// ////////////////////////////////////////////////////////////
 		
@@ -76,14 +84,17 @@ public class mysql_demo{
 				idMovimiento = rs.getInt(1);
 				nombreHabilidad = rs.getString(2);
 				tipo = rs.getInt(3);
-				System.out.println(idMovimiento+" "+nombreHabilidad+" "+tipo);
+				parametroEspecifico = rs.getInt(4);
+				System.out.println(idMovimiento+" "+nombreHabilidad+" "+tipo+" "+parametroEspecifico);
+				mov_esp.add(new MovAtaqueEspecial(tipoAEnum(tipo), nombreHabilidad, idMovimiento, parametroEspecifico));
+				nMov++;
 			} //end while
 			
 			
 			System.out.println("");
 
 			/*
-			 * Pokemons
+			 * Pokemons				random.nextInt(max - min + 1) + min
 			 */
 			
 			query = "Select * FROM pokedex";
@@ -95,6 +106,10 @@ public class mysql_demo{
 				nombreEspecie = rs.getString(2);
 				tipo = rs.getInt(3);
 				System.out.println(idEspecie+" "+nombreEspecie+" "+tipo);
+				pokedex.add(new Pokemon(idEspecie, nombreEspecie, rn.nextInt(1500)+1000, rn.nextInt(60)+20, rn.nextInt(60)+20, rn.nextInt(60)+20, rn.nextInt(60)+20, rn.nextInt(60)+20, 10, 0, Estado.SIN_ESTADO, tipoAEnum(tipo), 
+						(Movimiento)mov_esp.get(rn.nextInt(nMov)), (Movimiento)mov_esp.get(rn.nextInt(nMov)), 
+						(Movimiento)mov_esp.get(rn.nextInt(nMov)), (Movimiento)mov_esp.get(rn.nextInt(nMov))));
+				nPok++;
 			} //end while
 			
 			
@@ -113,6 +128,8 @@ public class mysql_demo{
 				nombreEntrenador = rs.getString(2);
 				dinero = rs.getInt(3);
 				System.out.println(idEntrenador+" "+nombreEntrenador+" "+dinero);
+				jugadores.add(new Entrenador(nombreEntrenador, dinero, 
+						pokedex.get(rn.nextInt(nPok)), pokedex.get(rn.nextInt(nPok)), pokedex.get(rn.nextInt(nPok)), pokedex.get(rn.nextInt(nPok))));
 			} //end while
 			
 			
@@ -132,12 +149,10 @@ public class mysql_demo{
 		// Una vez cargado los datos de mysql aqui empieza nuestro main
 		
 		
-        MovAtaqueFisico mv_01 = new MovAtaqueFisico(Tipo.PYRO, "Placaje", 1, 50);
+		MovAtaqueEspecial mv_01 = mov_esp.get(1);
 
-        Pokemon p1 = new Pokemon(01, "Malenia", 1000, 80, 20, 40, 10, 30, 10, 0, Estado.SIN_ESTADO, Tipo.HYDRO, mv_01,
-                mv_01, null, null);
-        Pokemon p2 = new Pokemon(02, "Radhan", 1000, 50, 30, 80, 40, 10, 10, 0, Estado.SIN_ESTADO, Tipo.PYRO, mv_01,
-                null, null, null);
+        Pokemon p1 = pokedex.get(1);
+        Pokemon p2 = pokedex.get(2);
 
         mv_01.usarMovimiento(p1, p2);
         System.out.println(p2.getPuntosSaludCombate());
@@ -146,4 +161,6 @@ public class mysql_demo{
         
 		// ////////////////////////////////////////////////////////////
 	}
+
+
 }
