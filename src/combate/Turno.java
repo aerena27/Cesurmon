@@ -13,7 +13,7 @@ public class Turno {
     Entrenador defensor;
 
     public Turno(int numeroTurno, String accionEntrenador, String accionRival) {
-        numeroTurno = 0;
+        this.numeroTurno = numeroTurno;
         this.accionEntrenador = accionEntrenador;
         this.accionRival = accionRival;
     }

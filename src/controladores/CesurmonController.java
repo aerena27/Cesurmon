@@ -13,9 +13,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import movimientos.Efectividad;
+import movimientos.MovAtaqueEspecial;
 import movimientos.MovAtaqueFisico;
 import movimientos.Movimiento;
 import movimientos.MovimientoAtaque;
@@ -149,6 +152,7 @@ public class CesurmonController implements Initializable {
     Movimiento moviUsuario;
     Movimiento moviRival;
     Combate combate;
+    int variableVictorias = 0;
 
     @FXML
     private TextField txtPokemonUsuario;
@@ -175,6 +179,27 @@ public class CesurmonController implements Initializable {
     private TextField txtResistenciaRival;
 
     @FXML
+    private TextField txtVentaja1;
+
+    @FXML
+    private TextField txtVentaja2;
+
+    @FXML
+    private TextField txtVentaja3;
+
+    @FXML
+    private TextField txtVentaja4;
+
+    @FXML
+    private TextField txtTurnosCombate;
+
+    @FXML
+    private TextField txtContadorKO;
+
+    @FXML
+    private TextField txtContadorVictorias;
+
+    @FXML
     private Button btnHuirCombate; // combateVolverMenuPrincipal
 
     @FXML
@@ -192,32 +217,48 @@ public class CesurmonController implements Initializable {
 
     @FXML
     private void setTextos() {
-        txtPokemonUsuario.setText("N. Pokedex nuestro: " + pokeUsuario.getIdEspecie());
-        txtPokemonRival.setText("N. Pokedex rival: " + pokeRival.getIdEspecie());
+        txtPokemonUsuario.setText(pokeUsuario.getNombreEspecie());
+        txtPokemonRival.setText(pokeRival.getNombreEspecie());
         txtVidaUsuario.setText("PS: " + pokeUsuario.getPuntosSalud() + "/"
                 + pokeUsuario.getPuntosSaludCombate());
         txtVidaRival.setText("PS: " + pokeRival.getPuntosSalud() + "/"
                 + pokeRival.getPuntosSaludCombate());
         txtResistenciaUsuario.setText("Estam.: " + pokeUsuario.getResistencia());
         txtResistenciaRival.setText("Estam.: " + pokeRival.getResistencia());
+
+        txtTurnosCombate.setText("Turno: " + combate.getNumeroTurno());
+        txtContadorKO.setText("Contador actual: " + combate.getKoJugador() + " - " + combate.getKoRival());
+        txtContadorVictorias.setText("Victorias: " + combate.getContadorVictorias());
+
+        txtVentaja1.setText(pokeUsuario.getMovimiento(0).checkVentaja(pokeRival));
+        txtVentaja2.setText(pokeUsuario.getMovimiento(1).checkVentaja(pokeRival));
+        txtVentaja3.setText(pokeUsuario.getMovimiento(2).checkVentaja(pokeRival));
+        txtVentaja4.setText(pokeUsuario.getMovimiento(3).checkVentaja(pokeRival));
+
+        btnMovimiento1.setText(pokeUsuario.getMovimiento(0).getNombreHabilidad());
+        btnMovimiento2.setText(pokeUsuario.getMovimiento(1).getNombreHabilidad());
+        btnMovimiento3.setText(pokeUsuario.getMovimiento(2).getNombreHabilidad());
+        btnMovimiento4.setText(pokeUsuario.getMovimiento(3).getNombreHabilidad());
+    }
+
+    @FXML
+    private void setTextosAcciones() {
+        txtAccionUsuario.setText(pokeUsuario.getMote() + " ha usado " + moviUsuario.getNombreHabilidad());
+        txtAccionRival.setText(pokeRival.getMote() + " ha usado " + moviRival.getNombreHabilidad());
     }
 
     @FXML
     private void iniciarCombate() {
         pokeUsuario = usuario.sacarPokemon();
         pokeRival = cpu.sacarPokemon();
-        setTextos();
         combate = new Combate(usuario, cpu);
+        setTextos();
     }
 
     @FXML
     private void continuarCombate() {
-        if (pokeUsuario.getPuntosSaludCombate() <= 0) {
-            pokeUsuario = usuario.sacarPokemon();
-        }
-        if (pokeRival.getPuntosSaludCombate() <= 0) {
-            pokeRival = cpu.sacarPokemon();
-        }
+        pokeUsuario = usuario.sacarPokemon();
+        pokeRival = cpu.sacarPokemon();
         setTextos();
     }
 
@@ -233,13 +274,11 @@ public class CesurmonController implements Initializable {
 
     @FXML
     private void usarMovimiento1(ActionEvent event) {
-        // TODO: Arreglar sacar pokemon
         moviUsuario = pokeUsuario.getMovimiento(0);
         escogerMovimientoRival();
         combate.realizarTurno(usuario, cpu, moviUsuario, moviRival);
+        setTextosAcciones();
         continuarCombate();
-        // moviUsuario.usarMovimiento(pokeUsuario, pokeRival);
-        // setTextos();
     }
 
     @FXML
@@ -247,7 +286,11 @@ public class CesurmonController implements Initializable {
 
     @FXML
     private void usarMovimiento2(ActionEvent event) { // btnMovimiento1
-
+        moviUsuario = pokeUsuario.getMovimiento(1);
+        escogerMovimientoRival();
+        combate.realizarTurno(usuario, cpu, moviUsuario, moviRival);
+        setTextosAcciones();
+        continuarCombate();
     }
 
     @FXML
@@ -255,7 +298,11 @@ public class CesurmonController implements Initializable {
 
     @FXML
     private void usarMovimiento3(ActionEvent event) { // btnMovimiento1
-
+        moviUsuario = pokeUsuario.getMovimiento(2);
+        escogerMovimientoRival();
+        combate.realizarTurno(usuario, cpu, moviUsuario, moviRival);
+        setTextosAcciones();
+        continuarCombate();
     }
 
     @FXML
@@ -263,7 +310,11 @@ public class CesurmonController implements Initializable {
 
     @FXML
     private void usarMovimiento4(ActionEvent event) { // btnMovimiento1
-
+        moviUsuario = pokeUsuario.getMovimiento(3);
+        escogerMovimientoRival();
+        combate.realizarTurno(usuario, cpu, moviUsuario, moviRival);
+        setTextosAcciones();
+        continuarCombate();
     }
 
     @FXML
@@ -278,15 +329,19 @@ public class CesurmonController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         MovAtaqueFisico placaje = new MovAtaqueFisico(Tipo.NORMAL, "Placaje", 1, 50);
-        Pokemon poke1 = new Pokemon(1, "Pikachu1", Tipo.ELECTRO, placaje, null, null, null);
-        Pokemon poke2 = new Pokemon(2, "Pikachu1", Tipo.ELECTRO, placaje, null, null, null);
-        Pokemon poke3 = new Pokemon(3, "Pikachu1", Tipo.ELECTRO, placaje, null, null, null);
-        Pokemon poke4 = new Pokemon(4, "Pikachu1", Tipo.ELECTRO, placaje, null, null, null);
+        MovAtaqueEspecial ascuas = new MovAtaqueEspecial(Tipo.PYRO, "Ascuas", 1, 50);
+        MovAtaqueFisico latigoCepa = new MovAtaqueFisico(Tipo.DENDRO, "Latigo cepa", 1, 50);
+        MovAtaqueEspecial pistolaAgua = new MovAtaqueEspecial(Tipo.HYDRO, "Pistola agua", 1, 50);
 
-        Pokemon poke5 = new Pokemon(5, "Pikachu2", Tipo.ELECTRO, placaje, placaje, placaje, placaje);
-        Pokemon poke6 = new Pokemon(6, "Pikachu2", Tipo.ELECTRO, placaje, placaje, placaje, placaje);
-        Pokemon poke7 = new Pokemon(7, "Pikachu2", Tipo.ELECTRO, placaje, placaje, placaje, placaje);
-        Pokemon poke8 = new Pokemon(8, "Pikachu2", Tipo.ELECTRO, placaje, placaje, placaje, placaje);
+        Pokemon poke1 = new Pokemon(1, "Pikachu1", Tipo.ELECTRO, placaje, ascuas, latigoCepa, pistolaAgua);
+        Pokemon poke2 = new Pokemon(2, "Blastoise1", Tipo.HYDRO, placaje, ascuas, latigoCepa, pistolaAgua);
+        Pokemon poke3 = new Pokemon(3, "Charizard1", Tipo.PYRO, placaje, ascuas, latigoCepa, pistolaAgua);
+        Pokemon poke4 = new Pokemon(4, "Venusaur1", Tipo.DENDRO, placaje, ascuas, latigoCepa, pistolaAgua);
+
+        Pokemon poke5 = new Pokemon(5, "Pikachu2", Tipo.ELECTRO, placaje, ascuas, latigoCepa, pistolaAgua);
+        Pokemon poke6 = new Pokemon(6, "Blastoise2", Tipo.HYDRO, placaje, ascuas, latigoCepa, pistolaAgua);
+        Pokemon poke7 = new Pokemon(7, "Charizard2", Tipo.PYRO, placaje, ascuas, latigoCepa, pistolaAgua);
+        Pokemon poke8 = new Pokemon(8, "Venusaur2", Tipo.DENDRO, placaje, ascuas, latigoCepa, pistolaAgua);
 
         poke1.setMaxStats();
         poke2.setMaxStats();

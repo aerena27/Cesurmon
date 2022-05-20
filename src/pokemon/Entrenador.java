@@ -74,9 +74,13 @@ public class Entrenador {
 
 	public Pokemon generarPokemon() {
 		Random rando = new Random();
-		int id = rando.nextInt(10) + 1;
+		int id = rando.nextInt(150) + 1;
 		Pokemon pokemon = new Pokemon(id, "test", Tipo.NORMAL, null, null, null, null);
 		return pokemon;
+	}
+
+	public void generarEquipo() {
+		// TODO: Aleatorizar equipo completo para el rival en combate
 	}
 
 	public Boolean intentarCapturar() {

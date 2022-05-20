@@ -20,19 +20,24 @@ public class Combate {
 	private Entrenador jugador;
 	private Entrenador rival;
 	private Entrenador ganador;
+	private Pokemon pokeJugador;
+	private Pokemon pokeRival;
 	private int koJugador;
 	private int koRival;
+	private int contadorVictorias;
+
 	public static final String PATH_LOG = "./log/combate.log";
 
 	public Combate(Entrenador jugador, Entrenador rival) {
 		super();
-		numeroTurno = 0;
+		numeroTurno = 1;
 		turnos = new LinkedList<>();
 		this.jugador = jugador;
 		this.rival = rival;
 		this.koJugador = 0;
 		this.koRival = 0;
 		this.ganador = null;
+		this.contadorVictorias = 0;
 	}
 
 	// Método donde se realizará la acción de todo el turno
@@ -44,13 +49,6 @@ public class Combate {
 		Movimiento movimientoUsuario = moviUsuario;
 		Movimiento movimientoRival = moviRival;
 
-		setNumeroTurno(this.numeroTurno++);
-		String accionUsuario = pokeUsuario.getNombreEspecie() + " ha usado "
-				+ moviUsuario.getNombreHabilidad();
-		String acccionRival = pokeRival.getNombreEspecie() + " ha usado "
-				+ movimientoRival.getNombreHabilidad();
-		Turno turno = new Turno(getNumeroTurno(), accionUsuario, acccionRival);
-
 		if (pokeUsuario.getVelocidad() >= pokeRival.getVelocidad()) {
 			movimientoUsuario.usarMovimiento(pokeUsuario, pokeRival);
 			moviRival.usarMovimiento(pokeRival, pokeUsuario);
@@ -58,6 +56,14 @@ public class Combate {
 			moviRival.usarMovimiento(pokeRival, pokeUsuario);
 			movimientoUsuario.usarMovimiento(pokeUsuario, pokeRival);
 		}
+
+		setNumeroTurno(getNumeroTurno() + 1);
+
+		String accionUsuario = pokeUsuario.getNombreEspecie() + " ha usado "
+				+ moviUsuario.getNombreHabilidad();
+		String acccionRival = pokeRival.getNombreEspecie() + " ha usado "
+				+ movimientoRival.getNombreHabilidad();
+		Turno turno = new Turno(getNumeroTurno() - 1, accionUsuario, acccionRival);
 		turnos.add(turno);
 		checkKO(pokeUsuario, pokeRival);
 
@@ -65,10 +71,10 @@ public class Combate {
 
 	public void checkKO(Pokemon pokeUsuario, Pokemon pokeRival) {
 		if (pokeUsuario.getPuntosSaludCombate() == 0) {
-			setKoJugador(this.koJugador++);
+			setKoJugador(this.koJugador + 1);
 		}
 		if (pokeRival.getPuntosSaludCombate() == 0) {
-			setKoRival(this.koRival++);
+			setKoRival(this.koRival + 1);
 		}
 		if (this.koJugador == 4 && this.koRival < 4) {
 			setGanador(rival);
@@ -76,8 +82,8 @@ public class Combate {
 		} else if (this.koJugador < 4 && this.koRival == 4) {
 			setGanador(jugador);
 			refrescarCombate();
-		} else {
-			setGanador(jugador);
+		} else if (this.koJugador == 4 && this.koRival == 4) {
+			setGanador(rival);
 			refrescarCombate();
 		}
 	}
@@ -90,15 +96,19 @@ public class Combate {
 		}
 	}
 
-	public String mensajeAtaque(Pokemon pokeAtacante, Movimiento movimiento) {
-		return "¡" + pokeAtacante.getNombreEspecie() + " ha usado " + movimiento.getNombreHabilidad() + "!";
-	}
-
 	public void refrescarCombate() {
 		setKoJugador(0);
 		setKoRival(0);
 		escribirCombate();
-		// TODO: Restaurar estadísticas de ambos equipos
+		setNumeroTurno(1);
+		setContadorVictorias(getContadorVictorias() + 1);
+		for (int i = 0; i < this.jugador.getEquipo1().size(); i++) {
+			jugador.getPokemon(i).revivir();
+		}
+		for (int i = 0; i < this.rival.getEquipo1().size(); i++) {
+			rival.getPokemon(i).revivir();
+			rival.generarEquipo(); // TODO: Programar el método
+		}
 	}
 
 	public int getNumeroTurno() {
@@ -147,6 +157,30 @@ public class Combate {
 
 	public void setGanador(Entrenador ganador) {
 		this.ganador = ganador;
+	}
+
+	public int getContadorVictorias() {
+		return contadorVictorias;
+	}
+
+	public void setContadorVictorias(int contadorVictorias) {
+		this.contadorVictorias = contadorVictorias;
+	}
+
+	public Pokemon getPokeJugador() {
+		return pokeJugador;
+	}
+
+	public void setPokeJugador(Pokemon pokeJugador) {
+		this.pokeJugador = pokeJugador;
+	}
+
+	public Pokemon getPokeRival() {
+		return pokeRival;
+	}
+
+	public void setPokeRival(Pokemon pokeRival) {
+		this.pokeRival = pokeRival;
 	}
 
 	public List<Turno> getTurnos() {

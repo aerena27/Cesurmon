@@ -44,6 +44,7 @@ public class Pokemon {
 		this.idPersonal = random.nextInt(999) + 1;
 		this.idEspecie = idEspecie;
 		this.nombreEspecie = nombreEspecie;
+		this.mote = nombreEspecie;
 		this.puntosSalud = random.nextInt(99) + 1;
 		this.puntosSaludCombate = this.puntosSalud;
 		this.ataqueFisico = random.nextInt(99) + 1;
@@ -235,6 +236,12 @@ public class Pokemon {
 	}
 
 	public void descansar() {
+		setResistencia(10);
+	}
+
+	public void revivir() {
+		setPuntosSaludCombate(getPuntosSalud());
+		setEstado(Estado.SIN_ESTADO);
 		setResistencia(10);
 	}
 

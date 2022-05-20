@@ -70,12 +70,12 @@
                </image>
             </ImageView>
             <TextField fx:id="txtPokemonRival" editable="false" layoutX="534.0" layoutY="19.0" prefHeight="22.0" prefWidth="142.0" />
-            <Button fx:id="btnHuirCombate" layoutX="305.0" layoutY="350.0" mnemonicParsing="false" onAction="#combateVolverMenuPrincipal" opacity="0.0" prefHeight="34.0" prefWidth="101.0" text="Huir" />
+            <Button fx:id="btnHuirCombate" layoutX="305.0" layoutY="350.0" mnemonicParsing="false" onAction="#combateVolverMenuPrincipal" prefHeight="34.0" prefWidth="101.0" text="Huir" />
             <Button fx:id="btnMovimiento1" layoutX="29.0" layoutY="285.0" mnemonicParsing="false" onAction="#usarMovimiento1" prefHeight="34.0" prefWidth="126.0" text="Movimiento 1" />
             <Button fx:id="btnMovimiento2" layoutX="164.0" layoutY="285.0" mnemonicParsing="false" onAction="#usarMovimiento2" prefHeight="34.0" prefWidth="126.0" text="Movimiento 2" />
             <Button fx:id="btnMovimiento3" layoutX="29.0" layoutY="350.0" mnemonicParsing="false" onAction="#usarMovimiento3" prefHeight="34.0" prefWidth="126.0" text="Movimiento 3" />
             <Button fx:id="btnMovimiento4" layoutX="164.0" layoutY="350.0" mnemonicParsing="false" onAction="#usarMovimiento4" prefHeight="34.0" prefWidth="126.0" text="Movimiento 4" />
-            <ImageView fitHeight="123.0" fitWidth="246.0" layoutX="41.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="checkVentaja1" fitHeight="123.0" fitWidth="246.0" layoutX="41.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Assets/baseRival.png" />
                </image>
@@ -108,6 +108,28 @@
             <TextField fx:id="txtResistenciaRival" editable="false" layoutX="614.0" layoutY="46.0" prefHeight="26.0" prefWidth="80.0" />
             <Button fx:id="btnDescansar" layoutX="310.0" layoutY="285.0" mnemonicParsing="false" onAction="#descansar" prefHeight="34.0" prefWidth="102.0" text="Descansar" />
             <TextField fx:id="txtVidaRival" editable="false" layoutX="500.0" layoutY="47.0" prefHeight="26.0" prefWidth="109.0" />
+            <TextField fx:id="txtVentaja1" alignment="CENTER" editable="false" layoutX="53.0" layoutY="257.0" prefHeight="26.0" prefWidth="102.0" />
+            <TextField fx:id="txtVentaja2" alignment="CENTER" editable="false" layoutX="186.0" layoutY="257.0" prefHeight="26.0" prefWidth="102.0" />
+            <TextField fx:id="txtVentaja3" alignment="CENTER" editable="false" layoutX="53.0" layoutY="322.0" prefHeight="26.0" prefWidth="102.0" />
+            <TextField fx:id="txtVentaja4" alignment="CENTER" editable="false" layoutX="186.0" layoutY="322.0" prefHeight="26.0" prefWidth="102.0" />
+            <ImageView fitHeight="179.0" fitWidth="161.0" layoutX="281.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Assets/textBox2.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="txtTurnosCombate" alignment="CENTER" editable="false" layoutX="289.0" layoutY="27.0" prefHeight="26.0" prefWidth="142.0" />
+            <ImageView fitHeight="179.0" fitWidth="161.0" layoutX="281.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Assets/textBox2.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="txtContadorKO" alignment="CENTER" editable="false" layoutX="290.0" layoutY="78.0" prefHeight="26.0" prefWidth="142.0" />
+            <ImageView fitHeight="179.0" fitWidth="161.0" layoutX="281.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Assets/textBox2.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="txtContadorVictorias" alignment="CENTER" editable="false" layoutX="290.0" layoutY="131.0" prefHeight="26.0" prefWidth="142.0" />
       </children>
     </AnchorPane>
   </children>
