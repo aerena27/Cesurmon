@@ -35,18 +35,42 @@ public abstract class Movimiento {
         this.resistencia = resistencia;
     }
 
+    public Boolean checkResistencia(Pokemon atacante) {
+        if (atacante.getResistencia() >= getResistencia()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public void consumirResistencia(Pokemon atacante) {
         atacante.setResistencia(atacante.getResistencia() - getResistencia());
     }
 
-    public Efectividad checkVentaja(Pokemon defensor) {
+    public String checkVentaja(Pokemon defensor) {
         float potenciador = logicaTipos(defensor);
         if (potenciador == 1.0) {
-            return Efectividad.NEUTRO;
+            return "NEUTRO";
         } else if (potenciador > 1.0) {
-            return Efectividad.VENTAJA;
+            return "VENTAJA";
         } else {
-            return Efectividad.DESVENTAJA;
+            return "DESVENTAJA";
+        }
+    }
+
+    public void corregirVitalidadNegativa(int vitalidadFinal, Pokemon defensor) {
+        if (vitalidadFinal <= 0) {
+            defensor.setPuntosSaludCombate(0);
+        } else {
+            defensor.setPuntosSaludCombate(vitalidadFinal);
+        }
+    }
+
+    public Boolean puedeAtacar(Pokemon atacante) {
+        if (atacante.getPuntosSaludCombate() <= 0) {
+            return false;
+        } else {
+            return true;
         }
     }
 
@@ -124,16 +148,16 @@ public abstract class Movimiento {
         efectividad[1][3] = 1f; // CRYO
         efectividad[1][4] = 1.5f; // HYDRO
         efectividad[1][5] = 0.5f; // ANEMO
-        efectividad[1][6] = 2f; // ELECTRO
+        efectividad[1][6] = 1.0f; // ELECTRO
         efectividad[1][7] = 0.5f; // SECTO
-        efectividad[1][8] = 1f; // GEO
+        efectividad[1][8] = 2f; // GEO
 
         // PYRO
         efectividad[2][0] = 1f; // NORMAL
         efectividad[2][1] = 2f; // DENDRO
         efectividad[2][2] = 0.5f; // PYRO
         efectividad[2][3] = 2f; // CRYO
-        efectividad[2][4] = 1.5f; // HYDRO
+        efectividad[2][4] = 0.5f; // HYDRO
         efectividad[2][5] = 1f; // ANEMO
         efectividad[2][6] = 1f; // ELECTRO
         efectividad[2][7] = 2f; // SECTO
@@ -141,24 +165,24 @@ public abstract class Movimiento {
 
         // CRYO
         efectividad[3][0] = 1f; // NORMAL
-        efectividad[3][1] = 1f; // DENDRO
-        efectividad[3][2] = 1.5f; // PYRO
+        efectividad[3][1] = 2f; // DENDRO
+        efectividad[3][2] = 0.5f; // PYRO
         efectividad[3][3] = 0.5f; // CRYO
-        efectividad[3][4] = 2f; // HYDRO
-        efectividad[3][5] = 1f; // ANEMO
+        efectividad[3][4] = 1.5f; // HYDRO
+        efectividad[3][5] = 2f; // ANEMO
         efectividad[3][6] = 1.5f; // ELECTRO
         efectividad[3][7] = 2f; // SECTO
-        efectividad[3][8] = 1f; // GEO
+        efectividad[3][8] = 1.5f; // GEO
 
         // HYDRO
         efectividad[4][0] = 1f; // NORMAL
-        efectividad[4][1] = 1.5f; // DENDRO
+        efectividad[4][1] = 0.5f; // DENDRO
         efectividad[4][2] = 2f; // PYRO
-        efectividad[4][3] = 0.5f; // CRYO
+        efectividad[4][3] = 1f; // CRYO
         efectividad[4][4] = 0.5f; // HYDRO
         efectividad[4][5] = 1f; // ANEMO
-        efectividad[4][6] = 1.5f; // ELECTRO
-        efectividad[4][7] = 1.5f; // SECTO
+        efectividad[4][6] = 1f; // ELECTRO
+        efectividad[4][7] = 1f; // SECTO
         efectividad[4][8] = 2f; // GEO
 
         // ANEMO
@@ -176,11 +200,11 @@ public abstract class Movimiento {
         efectividad[6][0] = 1f; // NORMAL
         efectividad[6][1] = 0.5f; // DENDRO
         efectividad[6][2] = 1f; // PYRO
-        efectividad[6][3] = 1.5f; // CRYO
-        efectividad[6][4] = 1.5f; // HYDRO
-        efectividad[6][5] = 1f; // ANEMO
+        efectividad[6][3] = 1f; // CRYO
+        efectividad[6][4] = 2f; // HYDRO
+        efectividad[6][5] = 2f; // ANEMO
         efectividad[6][6] = 0.5f; // ELECTRO
-        efectividad[6][7] = 2f; // SECTO
+        efectividad[6][7] = 1f; // SECTO
         efectividad[6][8] = 1f; // GEO
 
         // SECTO
