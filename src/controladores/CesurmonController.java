@@ -219,10 +219,10 @@ public class CesurmonController implements Initializable {
     private void setTextos() {
         txtPokemonUsuario.setText(pokeUsuario.getNombreEspecie());
         txtPokemonRival.setText(pokeRival.getNombreEspecie());
-        txtVidaUsuario.setText("PS: " + pokeUsuario.getPuntosSalud() + "/"
-                + pokeUsuario.getPuntosSaludCombate());
-        txtVidaRival.setText("PS: " + pokeRival.getPuntosSalud() + "/"
-                + pokeRival.getPuntosSaludCombate());
+        txtVidaUsuario.setText("PS: " + pokeUsuario.getPuntosSaludCombate() + "/"
+                + pokeUsuario.getPuntosSalud());
+        txtVidaRival.setText("PS: " + pokeRival.getPuntosSaludCombate() + "/"
+                + pokeRival.getPuntosSalud());
         txtResistenciaUsuario.setText("Estam.: " + pokeUsuario.getResistencia());
         txtResistenciaRival.setText("Estam.: " + pokeRival.getResistencia());
 
