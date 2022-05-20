@@ -38,22 +38,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.TestController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.CesurmonController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="422.0" prefWidth="700.0" VBox.vgrow="ALWAYS">
       <children>
-            <ImageView fitHeight="400.0" fitWidth="751.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="400.0" fitWidth="747.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Google%20Drive/Imagenes/FE37LWYaAAA_NQe.JPG" />
+                  <Image url="@Assets/fondoMenuPrincipal.JPG" />
                </image>
             </ImageView>
-            <Button layoutX="434.0" layoutY="110.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="117.0" text="Combatir" />
-            <Button fx:id="btnHolaMundo" layoutX="588.0" layoutY="110.0" mnemonicParsing="false" onAction="#sayHelloWorld" prefHeight="43.0" prefWidth="117.0" text="Hola mundo" />
+            <Button fx:id="btnMenuCombatir" layoutX="108.0" layoutY="167.0" mnemonicParsing="false" onAction="#entrarMenuCombate" prefHeight="43.0" prefWidth="117.0" text="Combatir" />
+            <Button fx:id="btnHolaMundo" layoutX="317.0" layoutY="304.0" mnemonicParsing="false" onAction="#sayHelloWorld" prefHeight="43.0" prefWidth="117.0" text="Hola mundo" />
             <ImageView fitHeight="105.0" fitWidth="653.0" layoutX="47.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Downloads/Captura-removebg-preview.png" />
+                  <Image url="@Assets/logoPrincipal.png" />
                </image>
             </ImageView>
+            <Button fx:id="btnMenuCapturar" layoutX="258.0" layoutY="167.0" mnemonicParsing="false" onAction="#entrarMenuCaptura" prefHeight="43.0" prefWidth="117.0" text="Capturar" />
+            <Button fx:id="btnEntrenar" layoutX="411.0" layoutY="167.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="117.0" text="Entrenar" />
+            <Button fx:id="btnCriar" layoutX="563.0" layoutY="167.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="117.0" text="Criar" />
+            <Button fx:id="btnUsarCaja" layoutX="108.0" layoutY="237.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="117.0" text="Usar la caja" />
       </children>
     </AnchorPane>
   </children>

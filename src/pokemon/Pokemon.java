@@ -3,6 +3,7 @@ package pokemon;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import combate.Estado;
 import combate.Tipo;
@@ -10,6 +11,7 @@ import movimientos.Movimiento;
 
 public class Pokemon {
 
+	private int idPersonal;
 	private int idEspecie;
 	private String nombreEspecie;
 	private String mote;
@@ -30,27 +32,30 @@ public class Pokemon {
 	private List<Movimiento> movimientos;
 	private List<Movimiento> movimientosAprendidos;
 
-	public Pokemon(int idEspecie, String nombreEspecie, int puntosSalud, int ataqueFisico,
-			int defensaFisica, int ataqueEspecial, int defensaEspecial, int velocidad, int nivel, int experiencia,
-			Estado estado, Tipo tipo, Movimiento movimiento1, Movimiento movimiento2,
+	public Pokemon(int idEspecie, String nombreEspecie, Tipo tipo, Movimiento movimiento1, Movimiento movimiento2,
 			Movimiento movimiento3, Movimiento movimiento4) {
 		super();
+
+		Random random = new Random();
 
 		movimientos = new LinkedList<>();
 		movimientosAprendidos = new LinkedList<>();
 
+		this.idPersonal = random.nextInt(999) + 1;
 		this.idEspecie = idEspecie;
 		this.nombreEspecie = nombreEspecie;
-		this.puntosSalud = puntosSalud;
-		this.ataqueFisico = ataqueFisico;
-		this.defensaFisica = defensaFisica;
-		this.ataqueEspecial = ataqueEspecial;
-		this.defensaEspecial = defensaEspecial;
-		this.velocidad = velocidad;
-		this.nivel = nivel;
-		this.experiencia = experiencia;
+		this.mote = nombreEspecie;
+		this.puntosSalud = random.nextInt(99) + 1;
+		this.puntosSaludCombate = this.puntosSalud;
+		this.ataqueFisico = random.nextInt(99) + 1;
+		this.defensaFisica = random.nextInt(99) + 1;
+		this.ataqueEspecial = random.nextInt(99) + 1;
+		this.defensaEspecial = random.nextInt(99) + 1;
+		this.velocidad = random.nextInt(99) + 1;
+		this.nivel = 1;
+		this.experiencia = 0;
 		this.fertilidad = 5;
-		this.estado = estado;
+		this.estado = Estado.SIN_ESTADO;
 		this.turnosParado = 0;
 		this.tipo = tipo;
 		this.resistencia = 10;
@@ -66,6 +71,14 @@ public class Pokemon {
 		anadirMovimientoAprendido(movimiento3);
 		anadirMovimientoAprendido(movimiento4);
 
+	}
+
+	public int getIdPersonal() {
+		return idPersonal;
+	}
+
+	public void setIdPersonal(int idPersonal) {
+		this.idPersonal = idPersonal;
 	}
 
 	public int getIdEspecie() {
@@ -225,4 +238,31 @@ public class Pokemon {
 	public void descansar() {
 		setResistencia(10);
 	}
+
+	public void revivir() {
+		setPuntosSaludCombate(getPuntosSalud());
+		setEstado(Estado.SIN_ESTADO);
+		setResistencia(10);
+	}
+
+	public void setMaxStats() {
+		setPuntosSaludCombate(99999);
+		setPuntosSalud(99999);
+		setAtaqueFisico(999);
+		setDefensaFisica(999);
+		setAtaqueEspecial(999);
+		setDefensaEspecial(999);
+		setVelocidad(999);
+	}
+
+	public void setMinStats() {
+		setPuntosSaludCombate(1);
+		setPuntosSalud(1);
+		setAtaqueFisico(1);
+		setDefensaFisica(1);
+		setAtaqueEspecial(1);
+		setDefensaEspecial(1);
+		setVelocidad(1);
+	}
+
 }
