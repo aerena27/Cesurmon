@@ -23,7 +23,14 @@ public abstract class MovimientoAtaque extends Movimiento {
         this.potencia = potencia;
     }
 
-    public float calcularStab(Pokemon atacante) { // Same-type attack bonus
+    /**
+     * Calcular el Same-type attack bonus, siendo un ligero bono de daño adicional
+     * si coincide el tipo del movimiento con el del Pokémon que lo ejecuta
+     * 
+     * @param atacante
+     * @return
+     */
+    public float calcularStab(Pokemon atacante) {
         float potenciadorPropioTipo;
         if (getTipo().equals(atacante.getTipo1())) {
             potenciadorPropioTipo = 1.5f;

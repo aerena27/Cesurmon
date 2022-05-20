@@ -6,29 +6,18 @@ import pokemon.Pokemon;
 
 public class Turno {
 
-    private int numeroTurno;
-    private String accionEntrenador;
-    private String accionRival;
-    Entrenador atacante;
-    Entrenador defensor;
+    /**
+     * Los turnos solamente almacenarán información relacionada con los logs
+     */
+
+    private int numeroTurno; // Turno que se muestre en el log
+    private String accionEntrenador; // Acción que se muestre en el log
+    private String accionRival; // Acción que se muestre en el log
 
     public Turno(int numeroTurno, String accionEntrenador, String accionRival) {
         this.numeroTurno = numeroTurno;
         this.accionEntrenador = accionEntrenador;
         this.accionRival = accionRival;
-    }
-
-    public String mensajeAtacanteLog(Pokemon pokeAtacante, Movimiento movimiento) {
-		return pokeAtacante.getNombreEspecie() + " ha usado " + movimiento.getNombreHabilidad();
-	}
-
-    public void mensajeDefensor(Entrenador defensor, float vida) {
-        // System.out.println("La vida de " + defensor.getEquipo1().getNombreEspecie() +
-        // " es: " + vida);
-    }
-
-    public void mostrarGanador(Entrenador ganador) {
-        System.out.println("El ganador es: " + ganador.getNombre());
     }
 
     public int getNumeroTurno() {

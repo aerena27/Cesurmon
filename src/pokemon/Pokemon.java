@@ -11,12 +11,12 @@ import movimientos.Movimiento;
 
 public class Pokemon {
 
-	private int idPersonal;
-	private int idEspecie;
+	private int idPersonal; // Código aleatorio identificativo
+	private int idEspecie; // Número de la Pokédex
 	private String nombreEspecie;
 	private String mote;
-	private int puntosSalud;
-	private int puntosSaludCombate;
+	private int puntosSalud; // Vitalidad total
+	private int puntosSaludCombate; // Vitalidad editable en combate
 	private int ataqueFisico;
 	private int defensaFisica;
 	private int ataqueEspecial;
@@ -26,11 +26,11 @@ public class Pokemon {
 	private int experiencia;
 	private int fertilidad;
 	private Estado estado;
-	private int turnosParado;
+	private int turnosParado; // Turnos congelado en combate
 	private Tipo tipo;
 	private int resistencia;
-	private List<Movimiento> movimientos;
-	private List<Movimiento> movimientosAprendidos;
+	private List<Movimiento> movimientos; // Lista de movimientos usables
+	private List<Movimiento> movimientosAprendidos; // Lista de movimientos aprendidos totales
 
 	public Pokemon(int idEspecie, String nombreEspecie, Tipo tipo, Movimiento movimiento1, Movimiento movimiento2,
 			Movimiento movimiento3, Movimiento movimiento4) {
@@ -221,6 +221,12 @@ public class Pokemon {
 		return movimientos;
 	}
 
+	/**
+	 * Devolver movimiento de lista movimientos de combate
+	 * 
+	 * @param i
+	 * @return Devolver movimiento en posición i
+	 */
 	public Movimiento getMovimiento(int i) {
 		return movimientos.get(i);
 	}
@@ -229,22 +235,36 @@ public class Pokemon {
 		return movimientosAprendidos;
 	}
 
+	/**
+	 * Añadir movimiento a lista de aprendidos si no es nulo
+	 * 
+	 * @param movimiento
+	 */
 	public void anadirMovimientoAprendido(Movimiento movimiento) {
 		if (movimiento != null && movimientosAprendidos.contains(movimiento) == false) {
 			movimientosAprendidos.add(movimiento);
 		}
 	}
 
+	/**
+	 * Resetear la resistencia a 10
+	 */
 	public void descansar() {
 		setResistencia(10);
 	}
 
+	/**
+	 * Resetear estadísticas variables de combate al finalizar el mismo
+	 */
 	public void revivir() {
 		setPuntosSaludCombate(getPuntosSalud());
 		setEstado(Estado.SIN_ESTADO);
 		setResistencia(10);
 	}
 
+	/**
+	 * Alterar las estadísticas al máximo para testear
+	 */
 	public void setMaxStats() {
 		setPuntosSaludCombate(99999);
 		setPuntosSalud(99999);
@@ -255,6 +275,9 @@ public class Pokemon {
 		setVelocidad(999);
 	}
 
+	/**
+	 * Alterar las estadísticas al mínimo para testear
+	 */
 	public void setMinStats() {
 		setPuntosSaludCombate(1);
 		setPuntosSalud(1);

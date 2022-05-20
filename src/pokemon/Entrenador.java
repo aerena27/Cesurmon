@@ -57,6 +57,12 @@ public class Entrenador {
 		this.equipo1 = equipo1;
 	}
 
+	/**
+	 * Comprobar el primer Pokémon del equipo 1 que esté vivo para sacarlo en
+	 * combate al debilitar el anterior
+	 * 
+	 * @return Pokémon que esté vivo
+	 */
 	public Pokemon sacarPokemon() {
 		Pokemon pokemon;
 		for (int i = 0; i < getEquipo1().size(); i++) {
@@ -68,10 +74,20 @@ public class Entrenador {
 		return null;
 	}
 
+	/**
+	 * Añadir nuevo Pokémon a la caja
+	 * 
+	 * @param pokemon
+	 */
 	public void meterCaja(Pokemon pokemon) {
 		cajaPokemon.add(pokemon);
 	}
 
+	/**
+	 * Generar un Pokémon al azar para testear
+	 * 
+	 * @return Pokémon aleatorio
+	 */
 	public Pokemon generarPokemon() {
 		Random rando = new Random();
 		int id = rando.nextInt(150) + 1;
@@ -79,10 +95,19 @@ public class Entrenador {
 		return pokemon;
 	}
 
+	/**
+	 * Generar un equipo de Pokémon al azar para testear rival en combate
+	 */
 	public void generarEquipo() {
 		// TODO: Aleatorizar equipo completo para el rival en combate
 	}
 
+	/**
+	 * Método de captura extendido en el controlador de las vistas
+	 * Controla la probabilidad de acierto en la captura
+	 * 
+	 * @return Pokémon generado
+	 */
 	public Boolean intentarCapturar() {
 		Random rando = new Random();
 		int acierto = rando.nextInt(2); // probabilidad de captura
@@ -95,6 +120,12 @@ public class Entrenador {
 		return false;
 	}
 
+	/**
+	 * Comprobar si se dispone de dinero suficiente para comprar algo
+	 * 
+	 * @param cantidadNecesaria coste de lo que se quiere comprar
+	 * @return Boolean de si hay disponible o no
+	 */
 	public Boolean checkDinero(int cantidadNecesaria) {
 		if (getDinero() >= cantidadNecesaria) {
 			return true;
@@ -102,12 +133,24 @@ public class Entrenador {
 		return false;
 	}
 
+	/**
+	 * Entregar dinero al perder un combate, asumiendo que el entrenador base es el
+	 * perdedor
+	 * 
+	 * @param ganador Entrenador que recibirá nuestro dinero
+	 */
 	public void darDinero(Entrenador ganador) {
 		int entregar = getDinero() / 3;
 		setDinero(getDinero() - entregar);
 		ganador.setDinero(ganador.getDinero() + entregar);
 	}
 
+	/**
+	 * Método de entrenamiento que aumenta las estadísticas de un Pokémon
+	 * 
+	 * @param pokemon  Pokémon a mejorar
+	 * @param eleccion Tipo de entrenamiento a ejecutar
+	 */
 	public void entrenar(Pokemon pokemon, int eleccion) {
 		switch (eleccion) {
 			case 1: // Entrenamiento pesado
@@ -146,6 +189,13 @@ public class Entrenador {
 		}
 	}
 
+	/**
+	 * Método de criar, genera un nuevo Pokémon a partir de otros 2, bajando la
+	 * fertilidad de estos y obteniendo características mezcladas
+	 * 
+	 * @param padre
+	 * @param madre
+	 */
 	public void ponerCriar(Pokemon padre, Pokemon madre) {
 		Random rando = new Random();
 		int tipoRando = rando.nextInt(1);

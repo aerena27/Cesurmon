@@ -23,10 +23,16 @@ public class MovEstadoAturdir extends MovimientoEstado {
         this.turnosParado = turnosParado;
     }
 
+    /**
+     * Los estados Aturdir alteran la capacidad de uso de movimientos en el rival,
+     * inflingiendo un estado y la cantidad de turnos sin poder ejecutar un
+     * movimiento.
+     */
     @Override
     public void usarMovimiento(Pokemon atacante, Pokemon defensor) {
         defensor.setEstado(getEstado());
         defensor.setTurnosParado(turnosParado);
+        // TODO: Añadirlos al controlador o combate
     }
 
 }

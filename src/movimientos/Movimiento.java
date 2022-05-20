@@ -8,7 +8,7 @@ public abstract class Movimiento {
 
     protected Tipo tipo;
     protected String nombreHabilidad;
-    protected int resistencia;
+    protected int resistencia; // Cantidad de estamina que quita al usarse
 
     Movimiento(Tipo tipo, String nombreHabilidad, int resistencia) {
         this.nombreHabilidad = nombreHabilidad;
@@ -35,6 +35,13 @@ public abstract class Movimiento {
         this.resistencia = resistencia;
     }
 
+    /**
+     * Comprobar resistencia del atacante para saber si se puede ejecutar el
+     * movimiento
+     * 
+     * @param atacante
+     * @return Boolean de si tiene suficiente estamina
+     */
     public Boolean checkResistencia(Pokemon atacante) {
         if (atacante.getResistencia() >= getResistencia()) {
             return true;
@@ -43,10 +50,22 @@ public abstract class Movimiento {
         }
     }
 
+    /**
+     * Consumir la resistencia del Pokémon al ejecutar el ataque
+     * 
+     * @param atacante
+     */
     public void consumirResistencia(Pokemon atacante) {
         atacante.setResistencia(atacante.getResistencia() - getResistencia());
     }
 
+    /**
+     * Devolver el tipo de efectividad comprobando el tipo del movimiento y tipo del
+     * Pokémon defensor
+     * 
+     * @param defensor
+     * @return
+     */
     public String checkVentaja(Pokemon defensor) {
         float potenciador = logicaTipos(defensor);
         if (potenciador == 1.0) {
@@ -58,6 +77,13 @@ public abstract class Movimiento {
         }
     }
 
+    /**
+     * Método usado en el cálculo final de daño ejecutado para corregir la vitalidad
+     * del Pokémon defensor en caso de ser negativa
+     * 
+     * @param vitalidadFinal Puntos de salud del defensor tras el ataque
+     * @param defensor       Pokémon que recibe el ataque
+     */
     public void corregirVitalidadNegativa(int vitalidadFinal, Pokemon defensor) {
         if (vitalidadFinal <= 0) {
             defensor.setPuntosSaludCombate(0);
@@ -66,6 +92,13 @@ public abstract class Movimiento {
         }
     }
 
+    /**
+     * Devolver si un Pokémon puede atacar en un turno, por si el contrincante ha
+     * empezado antes y lo ha debilitado en el mismo turno
+     * 
+     * @param atacante Pokémon que ejecute el movimiento
+     * @return
+     */
     public Boolean puedeAtacar(Pokemon atacante) {
         if (atacante.getPuntosSaludCombate() <= 0) {
             return false;
@@ -74,10 +107,24 @@ public abstract class Movimiento {
         }
     }
 
+    /**
+     * Método principal que será heredado y sobrescrito por el resto de hijos, según
+     * el tipo de movimiento. Hará un set del Pokémon defensor tras todos los
+     * cálculos correspondientes teniendo en cuenta todas las variables.
+     * 
+     * @param atacante Pokémon que ejecuta el movimiento
+     * @param defensor Pokémon que recibe el movimiento
+     */
     public void usarMovimiento(Pokemon atacante, Pokemon defensor) {
 
     }
 
+    /**
+     * Convertir Enum de tipos a número para ser usado en lógicaTipos
+     * 
+     * @param elemento Tipo
+     * @return Tipo en int
+     */
     public int convertirTipo(Tipo elemento) {
 
         if (elemento == Tipo.NORMAL)
@@ -110,7 +157,14 @@ public abstract class Movimiento {
         return -1;
     }
 
-    // Bono o reducción de daño por tipos de movimientos
+    /**
+     * Devolver un float con el potenciador o reductor de daño teniendo en cuenta el
+     * tipo del movimiento y el tipo del Pokémon defensor, para ser usado en la
+     * fórmula final de ataque.
+     * 
+     * @param defensor Pokémon que recibe el ataque
+     * @return Potenciador o reductor de daño por tipo
+     */
     public float logicaTipos(Pokemon defensor) {
 
         int a = convertirTipo(this.tipo);

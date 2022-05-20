@@ -21,4 +21,9 @@ public abstract class MovimientoMejora extends Movimiento {
     public void setTurnosMejora(int turnosMejora) {
         this.turnosMejora = turnosMejora;
     }
+
+    /**
+     * Los estados de Mejora aumentarán las características del usuario en el
+     * combate, según el tipo de mejora.
+     */
 }
