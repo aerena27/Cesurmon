@@ -73,10 +73,12 @@ public class Combate {
 		setNumeroTurno(getNumeroTurno() + 1);
 
 		// Escribir las acciones que se han ejecutado
-		String accionUsuario = pokeUsuario.getNombreEspecie() + " ha usado "
+		String accionUsuario = pokeUsuario.getNombreEspecie() +" de "+ usuario.getNombre() + " ha usado "
 				+ moviUsuario.getNombreHabilidad();
-		String acccionRival = pokeRival.getNombreEspecie() + " ha usado "
+		System.out.println(accionUsuario);
+		String acccionRival = pokeRival.getNombreEspecie() +" de "+ rival.getNombre() + " ha usado "
 				+ movimientoRival.getNombreHabilidad();
+		System.out.println(acccionRival);
 		// Se añaden las acciones a un nuevo turno y se guarda en una lista
 		Turno turno = new Turno(getNumeroTurno() - 1, accionUsuario, acccionRival);
 		turnos.add(turno);

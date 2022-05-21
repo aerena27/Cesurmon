@@ -1,6 +1,7 @@
 package aplicacion;
 
 import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -13,6 +14,7 @@ import movimientos.MovAtaqueFisico;
 import movimientos.Movimiento;
 import pokemon.Entrenador;
 import pokemon.Pokemon;
+import combate.Combate;
 
 import java.awt.Toolkit;
 import javax.swing.JLabel;
@@ -27,6 +29,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 import java.awt.event.ActionEvent;
 
 public class MainFrame extends JFrame {
@@ -82,7 +85,7 @@ public class MainFrame extends JFrame {
 
 					// Las variables donde vamos a cargar los datos de mysql
 
-					int idMovimiento, idEspecie, idEntrenador, tipo, parametroEspecifico, dinero, nMov=0, nPok=0;
+					int idMovimiento, idEspecie, idEntrenador, tipo, parametroEspecifico, dinero, nMovSP=0, nMovFI=0, nPok=0;
 					String nombreHabilidad, nombreEspecie, nombreEntrenador;
 
 
@@ -114,12 +117,16 @@ public class MainFrame extends JFrame {
 							nombreHabilidad = rs.getString(2);
 							tipo = rs.getInt(3);
 							parametroEspecifico = rs.getInt(4);
-							System.out.println(idMovimiento+" "+nombreHabilidad+" "+tipo+" "+parametroEspecifico);
-							if (idMovimiento<=20)
+							//System.out.println(idMovimiento+" "+nombreHabilidad+" "+tipo+" "+parametroEspecifico);
+							if (idMovimiento<=20) {
 								mov_esp.add(new MovAtaqueEspecial(tipoAEnum(tipo), nombreHabilidad, idMovimiento, parametroEspecifico));
-							else if (idMovimiento>20 && idMovimiento<=30)
+								nMovSP++;
+							}
+							else if (idMovimiento>20 && idMovimiento<=30) {
 								mov_fis.add(new MovAtaqueFisico(tipoAEnum(tipo), nombreHabilidad, idMovimiento, parametroEspecifico));
-							nMov++;
+								nMovFI++;
+							}
+							
 						} //end while
 
 
@@ -137,10 +144,10 @@ public class MainFrame extends JFrame {
 							idEspecie = rs.getInt(1);
 							nombreEspecie = rs.getString(2);
 							tipo = rs.getInt(3);
-							System.out.println(idEspecie+" "+nombreEspecie+" "+tipo);
+							//System.out.println(idEspecie+" "+nombreEspecie+" "+tipo);
 							pokedex.add(new Pokemon(idEspecie, nombreEspecie, tipoAEnum(tipo), 
-									(Movimiento)mov_esp.get(rn.nextInt(nMov)), (Movimiento)mov_esp.get(rn.nextInt(nMov)), 
-									(Movimiento)mov_fis.get(rn.nextInt(nMov)), (Movimiento)mov_fis.get(rn.nextInt(nMov))));
+									(Movimiento)mov_esp.get(rn.nextInt(nMovSP)), (Movimiento)mov_esp.get(rn.nextInt(nMovSP)), 
+									(Movimiento)mov_fis.get(rn.nextInt(nMovFI)), (Movimiento)mov_fis.get(rn.nextInt(nMovFI))));
 							nPok++;
 						} //end while
 
@@ -166,8 +173,7 @@ public class MainFrame extends JFrame {
 
 
 						conn.close();
-						System.out.println("Disconnected from database");
-						System.out.println(nMov+" "+nPok+"\n");
+						System.out.println("Disconnected from database\n");
 					} //end try
 					catch(ClassNotFoundException e) {
 						e.printStackTrace();
@@ -180,22 +186,55 @@ public class MainFrame extends JFrame {
 					}
 
 					// Una vez cargado los datos de mysql aqui empieza nuestro main
-
-
+					
+					Scanner sc = new Scanner(System.in);
+					int entrenador = -1;
+					int rival = -1;
+					while (entrenador == rival) {
+					System.out.println("Elije a tu jugador y a tu rival de la lista cargada de la base de datos");
+					entrenador = sc.nextInt();
+					rival = sc.nextInt();
+					}
+					if (entrenador!=0)
+						entrenador--;
+					if (rival!=0)
+						rival--;
+				
+					System.out.println("Juegas como "+jugadores.get(entrenador).getNombre());
+					System.out.println("Tu equipo es:");
+					System.out.println(jugadores.get(entrenador).getEquipo1().get(0).getNombreEspecie());
+					System.out.println(jugadores.get(entrenador).getEquipo1().get(1).getNombreEspecie());
+					System.out.println(jugadores.get(entrenador).getEquipo1().get(2).getNombreEspecie());
+					System.out.println(jugadores.get(entrenador).getEquipo1().get(3).getNombreEspecie()+"\n");
+					
+					System.out.println("Te enfrentas a "+jugadores.get(rival).getNombre());
+					System.out.println("Su equipo es:");
+					System.out.println(jugadores.get(rival).getEquipo1().get(0).getNombreEspecie());
+					System.out.println(jugadores.get(rival).getEquipo1().get(1).getNombreEspecie());
+					System.out.println(jugadores.get(rival).getEquipo1().get(2).getNombreEspecie());
+					System.out.println(jugadores.get(rival).getEquipo1().get(3).getNombreEspecie()+"\n");
+					
+					
+					
 					MovAtaqueEspecial mv_01 = mov_esp.get(1);
-					Pokemon p1 = pokedex.get(1);
-					Pokemon p2 = pokedex.get(2);
-					System.out.println(p1.getNombreEspecie());
-					System.out.println(p2.getNombreEspecie());
-					System.out.println(mv_01.getNombreHabilidad());
-
-
+					MovAtaqueFisico mv_02 = mov_fis.get(3);
+					
+					while (jugadores.get(2).getEquipo1().get(3).getPuntosSaludCombate()>0) {
+						Combate c1 = new Combate(jugadores.get(1), jugadores.get(2));
+						c1.realizarTurno(jugadores.get(1), jugadores.get(2), mv_01, mv_02);
+					}
+					
+					
 
 
 					// ////////////////////////////////////////////////////////////
 
-					MainFrame frame = new MainFrame();
+					
+					MainFrame frame = new MainFrame(jugadores);
 					frame.setVisible(true);
+				
+					
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -205,8 +244,9 @@ public class MainFrame extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param jugadores 
 	 */
-	public MainFrame() {
+	public MainFrame(List<Entrenador> jugadores) {
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(MainFrame.class.getResource("/recursos/EvUOT3_UUAIw-aA.png")));
 		setTitle("Cesurmon Impact: Revengence");
@@ -221,8 +261,7 @@ public class MainFrame extends JFrame {
 		JButton btnNewButton = new JButton("Combatir");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Combate newWindow = new Combate();
-				setVisible(false);
+				CombateFrame newWindow = new CombateFrame();
 				newWindow.setVisible(true);
 			}
 		});
@@ -255,9 +294,6 @@ public class MainFrame extends JFrame {
 		JButton btnCapturar = new JButton("Capturar");
 		btnCapturar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Captura newWindow = new Captura();
-				setVisible(false);
-				newWindow.setVisible(true);
 			}
 		});
 		btnCapturar.setBounds(1021, 206, 231, 68);
